@@ -412,7 +412,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 5
+#define TEMP_SENSOR_0 1
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -490,9 +490,12 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Creality Ender-3	
-  #define DEFAULT_Kp 20.09
-  #define DEFAULT_Ki 1.59	
-  #define DEFAULT_Kd 63.63
+  #define DEFAULT_Kp 18.52
+  #define DEFAULT_Ki 1.41
+  #define DEFAULT_Kd 60.87
+  // #define DEFAULT_Kp 20.09
+  // #define DEFAULT_Ki 1.59	
+  // #define DEFAULT_Kd 63.63
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -968,7 +971,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { -25, 10, -0.7 }
+#define NOZZLE_TO_PROBE_OFFSET { -25, 10, -0.5 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
