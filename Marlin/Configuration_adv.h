@@ -1642,10 +1642,14 @@
  * the probe to be unable to reach any points.
  */
 #if PROBE_SELECTED && !IS_KINEMATIC
-  #define MIN_PROBE_EDGE_LEFT 20
-  #define MIN_PROBE_EDGE_RIGHT 20
-  #define MIN_PROBE_EDGE_FRONT 26
-  #define MIN_PROBE_EDGE_BACK 10
+  #define PROBING_MARGIN_LEFT 20
+  // #define MIN_PROBE_EDGE_LEFT 20
+  #define PROBING_MARGIN_RIGHT 20
+  // #define MIN_PROBE_EDGE_RIGHT 20
+  #define PROBING_MARGIN_FRONT 26
+  // #define MIN_PROBE_EDGE_FRONT 26
+  #define PROBING_MARGIN_BACK 10
+  // #define MIN_PROBE_EDGE_BACK 10
 #endif
 
 #if EITHER(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL)
@@ -3369,11 +3373,11 @@
 /**
  * WiFi Support (Espressif ESP32 WiFi)
  */
-#define WIFISUPPORT         // Marlin embedded WiFi managenent
+//#define WIFISUPPORT         // Marlin embedded WiFi managenent
 //#define ESP3D_WIFISUPPORT   // ESP3D Library WiFi management (https://github.com/luc-github/ESP3DLib)
 
 #if EITHER(WIFISUPPORT, ESP3D_WIFISUPPORT)
-  //#define WEBSUPPORT          // Start a webserver (which may include auto-discovery)
+  #define WEBSUPPORT          // Start a webserver (which may include auto-discovery)
   //#define OTASUPPORT          // Support over-the-air firmware updates
   //#define WIFI_CUSTOM_COMMAND // Accept feature config commands (e.g., WiFi ESP3D) from the host
 
