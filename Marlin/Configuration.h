@@ -468,7 +468,7 @@
 #define HEATER_5_MAXTEMP 275
 #define HEATER_6_MAXTEMP 275
 #define HEATER_7_MAXTEMP 275
-#define BED_MAXTEMP      125
+#define BED_MAXTEMP      110
 
 //===========================================================================
 //============================= PID Settings ================================
@@ -758,7 +758,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.2, 80.4, 401.0, 413.9 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.2, 80.4, 399.56, 409.80 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.2, 80.4, 8451.0, 413.9 }
 
 /**
