@@ -137,9 +137,17 @@ void gCfgItems_init() {
   gCfgItems.levelingPos[4][0] = X_BED_SIZE / 2;
   gCfgItems.levelingPos[4][1] = Y_BED_SIZE / 2;
   gCfgItems.cloud_enable  = true;
-  gCfgItems.wifi_mode_sel = STA_MODEL;
-  gCfgItems.fileSysType   = FILE_SYS_SD;
-  gCfgItems.wifi_type     = ESP_WIFI;
+  #if USE_WIFI_FUNCTION
+    gCfgItems.wifi_mode_sel = STA_MODEL;
+    gCfgItems.fileSysType   = FILE_SYS_SD;
+    gCfgItems.wifi_type     = ESP_WIFI;
+  #endif  //USE_WIFI_FUNCTION
+  gCfgItems.filamentchange_load_length   = 200;
+  gCfgItems.filamentchange_load_speed    = 1000;
+  gCfgItems.filamentchange_unload_length = 200;
+  gCfgItems.filamentchange_unload_speed  = 1000;
+  gCfgItems.filament_limit_temper        = 200;
+  
   W25QXX.SPI_FLASH_BufferRead((uint8_t *)&gCfgItems.spi_flash_flag, VAR_INF_ADDR, sizeof(gCfgItems.spi_flash_flag));
   if (gCfgItems.spi_flash_flag == GCFG_FLAG_VALUE) {
     W25QXX.SPI_FLASH_BufferRead((uint8_t *)&gCfgItems, VAR_INF_ADDR, sizeof(gCfgItems));
@@ -175,8 +183,16 @@ void ui_cfg_init() {
   uiCfg.move_dist           = 1;
   uiCfg.moveSpeed           = 3000;
   uiCfg.stepPrintSpeed      = 10;
-  uiCfg.command_send = 0;
-  uiCfg.dialogType = 0;
+  uiCfg.command_send        = 0;
+  uiCfg.dialogType          = 0;
+  uiCfg.filament_heat_completed_load = 0;
+  uiCfg.filament_rate                = 0;
+  uiCfg.filament_loading_completed   = 0;
+  uiCfg.filament_unloading_completed = 0;
+  uiCfg.filament_loading_time_flg    = 0;
+  uiCfg.filament_loading_time_cnt    = 0;
+  uiCfg.filament_unloading_time_flg  = 0;
+  uiCfg.filament_unloading_time_cnt  = 0;
 	
   #if USE_WIFI_FUNCTION
 	
@@ -204,6 +220,9 @@ void ui_cfg_init() {
 	
   strcpy((char*)uiCfg.cloud_hostUrl, "baizhongyun.cn");
   uiCfg.cloud_port = 10086;
+
+  uiCfg.filament_loading_time = (uint32_t)((gCfgItems.filamentchange_load_length*60.0/gCfgItems.filamentchange_load_speed)+0.5);
+  uiCfg.filament_unloading_time = (uint32_t)((gCfgItems.filamentchange_unload_length*60.0/gCfgItems.filamentchange_unload_speed)+0.5);
 
   #endif
 }
@@ -269,6 +288,8 @@ lv_style_t style_sel_text;
 
 lv_style_t style_para_value;
 lv_style_t style_para_back;
+
+lv_style_t lv_bar_style_indic;
 
 void tft_style_init() {
   lv_style_copy(&tft_style_scr, &lv_style_scr);
@@ -386,6 +407,15 @@ void tft_style_init() {
   style_para_back.body.radius       = 3;
   style_para_back.text.color        = LV_COLOR_WHITE;
   style_para_back.text.font         = &TERN(HAS_SPI_FLASH_FONT, gb2312_puhui32, lv_font_roboto_22);
+
+  lv_style_copy(&lv_bar_style_indic, &lv_style_pretty_color);
+  lv_bar_style_indic.text.color        = lv_color_hex3(0xADF);
+  lv_bar_style_indic.image.color       = lv_color_hex3(0xADF);
+  lv_bar_style_indic.line.color        = lv_color_hex3(0xADF);
+  lv_bar_style_indic.body.main_color   = lv_color_hex3(0xADF);
+  lv_bar_style_indic.body.grad_color   = lv_color_hex3(0xADF);
+  lv_bar_style_indic.body.border.color = lv_color_hex3(0xADF);
+  
 }
 
 #define MAX_TITLE_LEN 28
@@ -496,8 +526,10 @@ char *getDispText(int index) {
       strcpy(public_buf_l, tool_menu.title);
       break;
     case WIFI_LIST_UI:
-	  strcpy(public_buf_l, list_menu.title);			
-      break;
+      #if USE_WIFI_FUNCTION
+	      strcpy(public_buf_l, list_menu.title);			
+        break;
+      #endif  //USE_WIFI_FUNCTION
     case MACHINE_PARA_UI:
       strcpy(public_buf_l, MachinePara_menu.title);
       break;
@@ -1085,28 +1117,29 @@ void GUI_RefreshPage() {
       }
       */
       break;
-
-    case WIFI_UI:
-      if(temperature_change_frequency == 1) {					
-	  	disp_wifi_state();
-	  	temperature_change_frequency = 0;
-	  }
-      break;
+    #if USE_WIFI_FUNCTION
+      case WIFI_UI:
+        if(temperature_change_frequency == 1) {					
+        disp_wifi_state();
+        temperature_change_frequency = 0;
+      }
+        break;
+    #endif  //USE_WIFI_FUNCTION
     case BIND_UI:
       /*refresh_bind_ui();*/
       break;
 
     case FILAMENTCHANGE_UI:
-      /*
       if (temperature_change_frequency) {
         temperature_change_frequency = 0;
-        disp_filament_sprayer_temp();
+        disp_filament_temp();
       }
-      */
       break;
     case DIALOG_UI:
-      /*filament_dialog_handle();*/
-      wifi_scan_handle();
+      filament_dialog_handle();
+      #if USE_WIFI_FUNCTION
+        wifi_scan_handle(); 
+      #endif //USE_WIFI_FUNCTION
       break;
     case MESHLEVELING_UI:
       /*disp_zpos();*/
@@ -1114,15 +1147,19 @@ void GUI_RefreshPage() {
     case HARDWARE_TEST_UI:
       break;
     case WIFI_LIST_UI:
-      if(printing_rate_update_flag == 1) {
-	  	disp_wifi_list();
-	  	printing_rate_update_flag = 0;
-	  }
+      #if USE_WIFI_FUNCTION
+        if(printing_rate_update_flag == 1) {
+        disp_wifi_list();
+        printing_rate_update_flag = 0;
+      
+	      }
+      #endif //USE_WIFI_FUNCTION
       break;
     case KEY_BOARD_UI:
       /*update_password_disp();
       update_join_state_disp();*/
       break;
+    #if USE_WIFI_FUNCTION
     case WIFI_TIPS_UI:
       switch(wifi_tips_type) {
 	  case TIPS_TYPE_JOINING:
@@ -1172,13 +1209,12 @@ void GUI_RefreshPage() {
 			   	break;
 	            }
       break;
+    #endif //USE_WIFI_FUNCTION
     case BABY_STEP_UI:
-      /*
       if (temperature_change_frequency == 1) {
         temperature_change_frequency = 0;
         disp_z_offset_value();
       }
-      */
       break;
     default: break;
   }
@@ -1245,9 +1281,11 @@ void clear_cur_ui() {
     case DISK_UI:
       //Clear_Disk();
       break;
-    case WIFI_UI:
-			lv_clear_wifi();
-      break;
+    #if USE_WIFI_FUNCTION
+      case WIFI_UI:
+        lv_clear_wifi();
+        break;
+    #endif
     case MORE_UI:
       //Clear_more();
       break;
@@ -1262,6 +1300,9 @@ void clear_cur_ui() {
       break;
     case PRINT_MORE_UI:
       //Clear_Printmore();
+      break;
+    case FILAMENTCHANGE_UI:
+      lv_clear_filament_change();
       break;
     case LEVELING_UI:
       lv_clear_manualLevel();
@@ -1283,15 +1324,19 @@ void clear_cur_ui() {
     case HARDWARE_TEST_UI:
       //Clear_Hardwaretest();
       break;
-    case WIFI_LIST_UI:
-      lv_clear_wifi_list();
-      break;
+    #if USE_WIFI_FUNCTION
+      case WIFI_LIST_UI:
+          lv_clear_wifi_list();
+        break;
+    #endif //USE_WIFI_FUNCTION
     case KEY_BOARD_UI:
 	    lv_clear_keyboard();
       break;
-	case WIFI_TIPS_UI:
-	    lv_clear_wifi_tips();
-      break;
+    #if USE_WIFI_FUNCTION
+      case WIFI_TIPS_UI:
+        lv_clear_wifi_tips();
+        break;
+    #endif
     case MACHINE_PARA_UI:
       lv_clear_machine_para();
       break;
@@ -1317,7 +1362,7 @@ void clear_cur_ui() {
       //Clear_EndstopType();
       break;
     case FILAMENT_SETTINGS_UI:
-      //Clear_FilamentSettings();
+      lv_clear_filament_settings();
       break;
     case LEVELING_SETTIGNS_UI:
       //Clear_LevelingSettings();
@@ -1370,7 +1415,7 @@ void clear_cur_ui() {
       lv_clear_number_key();
       break;
     case BABY_STEP_UI:
-      //Clear_babyStep();
+      lv_clear_baby_stepping();
       break;
     case PAUSE_POS_UI:
       lv_clear_pause_position();
@@ -1388,13 +1433,17 @@ void clear_cur_ui() {
           lv_clear_tmc_step_mode_settings();
           break;
       #endif
-	#if USE_WIFI_FUNCTION
-	case WIFI_SETTINGS_UI:
-		lv_clear_wifi_settings();
-		break;
-	#endif
-    default:
+    #if USE_WIFI_FUNCTION
+    case WIFI_SETTINGS_UI:
+      lv_clear_wifi_settings();
       break;
+    #endif
+    #if USE_SENSORLESS
+      case HOMING_SENSITIVITY_UI:
+        lv_clear_homing_sensitivity_settings();
+        break;
+    #endif
+    default: break;  
   }
   //GUI_Clear();
 }
@@ -1465,9 +1514,11 @@ void draw_return_ui() {
       case DISK_UI:
         //draw_Disk();
         break;
-      case WIFI_UI:
-	    lv_draw_wifi();
-        break;
+      #if USE_WIFI_FUNCTION
+        case WIFI_UI:
+          lv_draw_wifi();
+          break;
+      #endif  //USE_WIFI_FUNCTION
       case MORE_UI:
         //draw_More();
         break;
@@ -1475,7 +1526,7 @@ void draw_return_ui() {
         //draw_printmore();
         break;
       case FILAMENTCHANGE_UI:
-        //draw_FilamentChange();
+        lv_draw_filament_change();
         break;
       case LEVELING_UI:
         lv_draw_manualLevel();
@@ -1498,13 +1549,17 @@ void draw_return_ui() {
         //draw_Hardwaretest();
         break;
       case WIFI_LIST_UI:
-	      lv_draw_wifi_list();
+        #if USE_WIFI_FUNCTION
+	        lv_draw_wifi_list();
+        #endif //USE_WIFI_FUNCTION
         break;
       case KEY_BOARD_UI:
 	      lv_draw_keyboard();
         break;
 		  case WIFI_TIPS_UI:
-	      lv_draw_wifi_tips();
+        #if USE_WIFI_FUNCTION
+	        lv_draw_wifi_tips();
+        #endif
         break;
       case MACHINE_PARA_UI:
         lv_draw_machine_para();
@@ -1531,7 +1586,7 @@ void draw_return_ui() {
         //draw_EndstopType();
         break;
       case FILAMENT_SETTINGS_UI:
-        //draw_FilamentSettings();
+        lv_draw_filament_settings();
         break;
       case LEVELING_SETTIGNS_UI:
         //draw_LevelingSettings();
@@ -1587,7 +1642,7 @@ void draw_return_ui() {
         //draw_dialog(uiCfg.dialogType);
         break;
       case BABY_STEP_UI:
-        //draw_babyStep();
+        lv_draw_baby_stepping();
         break;
       case PAUSE_POS_UI:
         lv_draw_pause_position();
@@ -1605,11 +1660,16 @@ void draw_return_ui() {
             lv_draw_tmc_step_mode_settings();
             break;
         #endif
-	  #if USE_WIFI_FUNCTION
-	  case WIFI_SETTINGS_UI:
-		lv_draw_wifi_settings();
-		break;
-	  #endif
+      #if USE_WIFI_FUNCTION
+        case WIFI_SETTINGS_UI:
+        lv_draw_wifi_settings();
+        break;
+      #endif
+      #if USE_SENSORLESS
+        case HOMING_SENSITIVITY_UI:
+          lv_draw_homing_sensitivity_settings();
+          break;
+      #endif
       default: break;
     }
   }
@@ -1650,7 +1710,9 @@ void LV_TASK_HANDLER() {
     disp_pre_gcode(2, 36);
   #endif
   GUI_RefreshPage();
-  get_wifi_commands();
+  #if USE_WIFI_FUNCTION
+    get_wifi_commands();
+  #endif  //USE_WIFI_FUNCTION
   //sd_detection();
 }
 

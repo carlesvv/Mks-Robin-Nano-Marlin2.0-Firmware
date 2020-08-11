@@ -21,29 +21,16 @@
  */
 #pragma once
 
-/**
- * @file tft_lvgl_configuration.h
- * @date    2020-02-21
- * */
+#ifdef __cplusplus
+extern "C" { /* C-declarations for C++ */
+#endif
 
-//#ifdef __cplusplus
-//extern "C" {
-//#endif
+extern void lv_draw_baby_stepping(void);
+extern void lv_clear_baby_stepping();
+extern void disp_baby_step_dist();
+extern void disp_z_offset_value();
 
-#include <lvgl.h>
-
-#define LV_USE_ROTATION_180     0
-#define USE_WIFI_FUNCTION		1
-
-void tft_lvgl_init();
-void my_disp_flush(lv_disp_drv_t * disp, const lv_area_t * area, lv_color_t * color_p);
-bool my_touchpad_read(lv_indev_drv_t * indev_driver, lv_indev_data_t * data);
-
-void LCD_Clear(uint16_t Color);
-void tft_set_point(uint16_t x, uint16_t y, uint16_t point);
-void ili9320_SetWindows(uint16_t StartX, uint16_t StartY, uint16_t width, uint16_t heigh);
-void LCD_WriteRAM_Prepare(void);
-
-//#ifdef __cplusplus
-//} /* extern "C" */
-//#endif
+//extern void disp_temp_ready_print();
+#ifdef __cplusplus
+} /* C-declarations for C++ */
+#endif

@@ -27,6 +27,8 @@
 #include "wifi_module.h"
 #include "wifi_upload.h"
 
+#if USE_WIFI_FUNCTION
+
 #include "../../../../MarlinCore.h"
 #include "../../../../module/temperature.h"
 #include "../../../../gcode/queue.h"
@@ -310,6 +312,7 @@ void esp_port_begin(uint8_t interrupt) {
 	}
 }
 
+#if USE_WIFI_FUNCTION
 
 int raw_send_to_wifi(char *buf, int len) {
 	int i;
@@ -324,6 +327,8 @@ int raw_send_to_wifi(char *buf, int len) {
 	return len;
 
 }
+
+#endif //USE_WIFI_FUNCTION
 
 void wifi_ret_ack() {}
 
@@ -2049,7 +2054,7 @@ int readWifiBuf(int8_t *buf, int32_t len) {
 	int i = 0 ;
 
 	while(i < len) {
-		if(WIFISERIAL.available()) {
+		if (WIFISERIAL.available()) {
 			buf[i] = WIFISERIAL.read();
 			i++;	
 		}
@@ -2059,6 +2064,8 @@ int readWifiBuf(int8_t *buf, int32_t len) {
 	}
 	return i;
 }
+
+#endif //USE_WIFI_FUNCTION
 
 #endif	// HAS_TFT_LVGL_UI
 
