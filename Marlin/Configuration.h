@@ -758,7 +758,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.2, 80.4, 399.56, 409.80 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 320.8, 321.6, 1598.4, 1639.2 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.2, 80.4, 8451.0, 413.9 }
 
 /**
