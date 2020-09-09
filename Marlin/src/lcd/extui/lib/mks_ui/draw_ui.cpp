@@ -147,6 +147,8 @@ void gCfgItems_init() {
   gCfgItems.filamentchange_unload_length = 200;
   gCfgItems.filamentchange_unload_speed  = 1000;
   gCfgItems.filament_limit_temper        = 200;
+
+  gCfgItems.encoder_enable = true;
   
   W25QXX.SPI_FLASH_BufferRead((uint8_t *)&gCfgItems.spi_flash_flag, VAR_INF_ADDR, sizeof(gCfgItems.spi_flash_flag));
   if (gCfgItems.spi_flash_flag == FLASH_INF_VALID_FLAG) {
@@ -163,6 +165,18 @@ void gCfgItems_init() {
     W25QXX.SPI_FLASH_BufferWrite((uint8_t *)&custom_gcode_command[3], OTHERS_COMMAND_ADDR_3, 100);
     W25QXX.SPI_FLASH_BufferWrite((uint8_t *)&custom_gcode_command[4], OTHERS_COMMAND_ADDR_4, 100);
   }
+
+  #if ENABLED(GRAPHICAL_TFT_ROTATE_180)
+  	if(gCfgItems.disp_rotation_180 != 0xEE) {
+      gCfgItems.disp_rotation_180 = 0xEE;
+      update_spi_flash();
+    }
+  #else
+  	if(gCfgItems.disp_rotation_180 != 0) {
+		  gCfgItems.disp_rotation_180 = 0;
+		  update_spi_flash();
+  	}
+  #endif
 
   uiCfg.F[0] = 'N';
   uiCfg.F[1] = 'A';
@@ -221,10 +235,10 @@ void ui_cfg_init() {
   strcpy((char*)uiCfg.cloud_hostUrl, "baizhongyun.cn");
   uiCfg.cloud_port = 10086;
 
+  #endif
+
   uiCfg.filament_loading_time = (uint32_t)((gCfgItems.filamentchange_load_length*60.0/gCfgItems.filamentchange_load_speed)+0.5);
   uiCfg.filament_unloading_time = (uint32_t)((gCfgItems.filamentchange_unload_length*60.0/gCfgItems.filamentchange_unload_speed)+0.5);
-
-  #endif
 }
 
 void update_spi_flash() {
@@ -664,7 +678,7 @@ char *creat_title_text() {
         #if ENABLED(TFT_LVGL_UI_SPI)
           SPI_TFT.SetWindows(xpos_pixel, ypos_pixel + row, 200, 1);
         #else
-          ili9320_SetWindows(xpos_pixel, ypos_pixel + row, 200, 1);
+          LCD_setWindowArea(xpos_pixel, ypos_pixel + row, 200, 1);
           LCD_WriteRAM_Prepare();
         #endif
 
@@ -776,7 +790,7 @@ char *creat_title_text() {
         #if ENABLED(TFT_LVGL_UI_SPI)
           SPI_TFT.SetWindows(xpos_pixel, ypos_pixel + row, 200, 1);
         #else
-          ili9320_SetWindows(xpos_pixel, ypos_pixel + row, 200, 1);
+          LCD_setWindowArea(xpos_pixel, ypos_pixel + row, 200, 1);
           LCD_WriteRAM_Prepare();
         #endif
 
@@ -915,7 +929,7 @@ char *creat_title_text() {
         uint16_t temp_p;
         int i = 0;
         uint16_t *p_index;
-        ili9320_SetWindows(xpos_pixel, y_off * 20 + ypos_pixel, 200, 20); // 200*200
+        LCD_setWindowArea(xpos_pixel, y_off * 20 + ypos_pixel, 200, 20); // 200*200
 
         LCD_WriteRAM_Prepare();
 
