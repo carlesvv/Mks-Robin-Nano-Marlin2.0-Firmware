@@ -2224,7 +2224,7 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT       510        // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT       560        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     64    // 0..256
     #define X_RSENSE          0.11
@@ -2232,7 +2232,7 @@
   #endif
 
   #if AXIS_IS_TMC(X2)
-    #define X2_CURRENT      510
+    #define X2_CURRENT      560
     #define X2_CURRENT_HOME X2_CURRENT
     #define X2_MICROSTEPS    64
     #define X2_RSENSE         0.11
@@ -2240,7 +2240,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT       510
+    #define Y_CURRENT       560
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     64
     #define Y_RSENSE          0.11
@@ -2248,7 +2248,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y2)
-    #define Y2_CURRENT      510
+    #define Y2_CURRENT      560
     #define Y2_CURRENT_HOME Y2_CURRENT
     #define Y2_MICROSTEPS    64
     #define Y2_RSENSE         0.11
@@ -2256,7 +2256,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT       610
+    #define Z_CURRENT       710
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     64
     #define Z_RSENSE          0.11
@@ -2264,7 +2264,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z2)
-    #define Z2_CURRENT      610
+    #define Z2_CURRENT      710
     #define Z2_CURRENT_HOME Z2_CURRENT
     #define Z2_MICROSTEPS    64
     #define Z2_RSENSE         0.11
@@ -2272,7 +2272,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z3)
-    #define Z3_CURRENT      610
+    #define Z3_CURRENT      710
     #define Z3_CURRENT_HOME Z3_CURRENT
     #define Z3_MICROSTEPS    64
     #define Z3_RSENSE         0.11
@@ -2280,7 +2280,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z4)
-    #define Z4_CURRENT      610
+    #define Z4_CURRENT      710
     #define Z4_CURRENT_HOME Z4_CURRENT
     #define Z4_MICROSTEPS    64
     #define Z4_RSENSE         0.11
@@ -2288,56 +2288,56 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT      610
+    #define E0_CURRENT      710
     #define E0_MICROSTEPS    64
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E1)
-    #define E1_CURRENT      610
+    #define E1_CURRENT      710
     #define E1_MICROSTEPS    64
     #define E1_RSENSE         0.11
     #define E1_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E2)
-    #define E2_CURRENT      610
+    #define E2_CURRENT      710
     #define E2_MICROSTEPS    64
     #define E2_RSENSE         0.11
     #define E2_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E3)
-    #define E3_CURRENT      610
+    #define E3_CURRENT      710
     #define E3_MICROSTEPS    64
     #define E3_RSENSE         0.11
     #define E3_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E4)
-    #define E4_CURRENT      610
+    #define E4_CURRENT      710
     #define E4_MICROSTEPS    64
     #define E4_RSENSE         0.11
     #define E4_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E5)
-    #define E5_CURRENT      610
+    #define E5_CURRENT      710
     #define E5_MICROSTEPS    64
     #define E5_RSENSE         0.11
     #define E5_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E6)
-    #define E6_CURRENT      610
+    #define E6_CURRENT      710
     #define E6_MICROSTEPS    64
     #define E6_RSENSE         0.11
     #define E6_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E7)
-    #define E7_CURRENT      610
+    #define E7_CURRENT      710
     #define E7_MICROSTEPS    64
     #define E7_RSENSE         0.11
     #define E7_CHAIN_POS     -1
@@ -2447,7 +2447,7 @@
    * M912 - Clear stepper driver overtemperature pre-warn condition flag.
    * M122 - Report driver parameters (Requires TMC_DEBUG)
    */
-  //#define MONITOR_DRIVER_STATUS
+  #define MONITOR_DRIVER_STATUS
 
   #if ENABLED(MONITOR_DRIVER_STATUS)
     #define CURRENT_STEP_DOWN     50  // [mA]
@@ -2464,10 +2464,10 @@
    */
   #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     100  // [mm/s]
-  #define X2_HYBRID_THRESHOLD    100
-  #define Y_HYBRID_THRESHOLD     100
-  #define Y2_HYBRID_THRESHOLD    100
+  #define X_HYBRID_THRESHOLD     150  // [mm/s]
+  #define X2_HYBRID_THRESHOLD    150
+  #define Y_HYBRID_THRESHOLD     150
+  #define Y2_HYBRID_THRESHOLD    150
   #define Z_HYBRID_THRESHOLD       3
   #define Z2_HYBRID_THRESHOLD      3
   #define Z3_HYBRID_THRESHOLD      3

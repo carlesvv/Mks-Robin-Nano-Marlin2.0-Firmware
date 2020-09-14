@@ -104,13 +104,13 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT 3
+#define SERIAL_PORT -1
 
 /**
  * Select a secondary serial port on the board to use for communication with the host.
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT_2 -1
+#define SERIAL_PORT_2 3
 
 /**
  * This setting determines the communication speed of the printer.
@@ -493,9 +493,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Creality Ender-3	
-  #define DEFAULT_Kp 22.97
-  #define DEFAULT_Ki 1.79
-  #define DEFAULT_Kd 73.65
+  #define DEFAULT_Kp 23.63
+  #define DEFAULT_Ki 1.83
+  #define DEFAULT_Kd 75.30
   // #define DEFAULT_Kp 20.09
   // #define DEFAULT_Ki 1.59	
   // #define DEFAULT_Kd 63.63
@@ -552,9 +552,9 @@
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 16.82
-  #define DEFAULT_bedKi 2.47
-  #define DEFAULT_bedKd 76.40
+  #define DEFAULT_bedKp 42.16
+  #define DEFAULT_bedKi 7.97
+  #define DEFAULT_bedKd 148.71
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
@@ -583,14 +583,14 @@
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 170
+#define EXTRUDE_MINTEMP 180
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
  * Note: For Bowden Extruders make this large enough to allow load/unload.
  */
 #define PREVENT_LENGTHY_EXTRUDE
-#define EXTRUDE_MAXLENGTH 350
+#define EXTRUDE_MAXLENGTH 450
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
@@ -758,7 +758,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 320.8, 321.6, 1598.4, 1639.2 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 320.8, 321.6, 1598.4, 1664.8 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.2, 80.4, 8451.0, 413.9 }
 
 /**
@@ -1107,7 +1107,7 @@
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR true
 #define INVERT_Y_DIR false
-#define INVERT_Z_DIR true
+#define INVERT_Z_DIR false
 
 // @section extruder
 
