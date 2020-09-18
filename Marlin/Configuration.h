@@ -496,9 +496,6 @@
   #define DEFAULT_Kp 23.63
   #define DEFAULT_Ki 1.83
   #define DEFAULT_Kd 75.30
-  // #define DEFAULT_Kp 20.09
-  // #define DEFAULT_Ki 1.59	
-  // #define DEFAULT_Kd 63.63
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -1005,7 +1002,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -25, 10, -0.27 }
+#define NOZZLE_TO_PROBE_OFFSET { 35, -8, -2.6 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1142,15 +1139,15 @@
 
 // The size of the print bed
 #define X_BED_SIZE 235
-#define Y_BED_SIZE 229
+#define Y_BED_SIZE 231
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
-#define Y_MIN_POS 0
+#define Y_MIN_POS -8
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 220
+#define Z_MAX_POS 230
 
 /**
  * Software Endstops
