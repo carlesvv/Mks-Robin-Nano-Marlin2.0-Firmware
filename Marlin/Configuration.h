@@ -493,9 +493,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Creality Ender-3	
-  #define DEFAULT_Kp 23.63
-  #define DEFAULT_Ki 1.83
-  #define DEFAULT_Kd 75.30
+  #define DEFAULT_Kp 23.21
+  #define DEFAULT_Ki 1.74
+  #define DEFAULT_Kd 77.22
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -755,8 +755,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 320.8, 321.6, 1598.4, 1664.8 }
-//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.2, 80.4, 8451.0, 413.9 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 320.8, 321.6, 1598.4, 1669.33 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1002,7 +1001,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 35, -8, -2.48 }
+#define NOZZLE_TO_PROBE_OFFSET { -39, -14.5, -0.95 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1109,7 +1108,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -1379,7 +1378,7 @@
  * Commands to execute at the end of G29 probing.
  * Useful to retract or move the Z probe out of the way.
  */
-#define Z_PROBE_END_SCRIPT "G1 Z10 F12000\nG1 X0 Y0 F3600\nM500"	
+#define Z_PROBE_END_SCRIPT "G1 Z10 F12000\nG1 X0 F3600\nG1 Y0 F3600\nM500"	
 
 // @section homing
 
