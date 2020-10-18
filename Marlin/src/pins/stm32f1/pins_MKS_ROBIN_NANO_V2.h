@@ -214,7 +214,7 @@
     #define MKS_TEST_PS_ON_PIN                PB2   // PW_OFF
   #endif
 #else
-  //#define POWER_LOSS_PIN                      PA2   // PW_DET
+  #define POWER_LOSS_PIN                      PA2   // PW_DET
   //#define PS_ON_PIN                           PB2   // PW_OFF
   #define FIL_RUNOUT_PIN                      PA4
   #define FIL_RUNOUT2_PIN                     PE6
