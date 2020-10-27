@@ -90,6 +90,7 @@
   #include "draw_wifi.h"
   #include "draw_wifi_list.h"
   #include "draw_wifi_tips.h"
+  #include "draw_cloud_bind.h"
 #endif  //USE_WIFI_FUNCTION
 
 #include "../../inc/MarlinConfigPre.h"
@@ -162,6 +163,10 @@
 
   #define PARA_UI_BACK_BTN_X_SIZE   70
   #define PARA_UI_BACK_BTN_Y_SIZE   40
+
+  #define QRCODE_X 	                20
+  #define QRCODE_Y 	                40
+  #define QRCODE_WIDTH	            160
 
 #else // ifdef TFT35
 

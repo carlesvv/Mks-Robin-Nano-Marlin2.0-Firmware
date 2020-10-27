@@ -132,6 +132,7 @@
 #endif
 
 //#define MKS_TEST
+#define USE_WIFI_FUNCTION   1
 
 // Name displayed in the LCD "Ready" message and Info menu
 #define CUSTOM_MACHINE_NAME "Ender 3 Pro"

@@ -1088,7 +1088,7 @@ void GUI_RefreshPage() {
         break;
     #endif  //USE_WIFI_FUNCTION
     case BIND_UI:
-      /*refresh_bind_ui();*/
+      refresh_bind_ui();
       break;
 
     case FILAMENTCHANGE_UI:
@@ -1270,7 +1270,7 @@ void clear_cur_ui() {
       lv_clear_manualLevel();
       break;
     case BIND_UI:
-      //Clear_Bind();
+      lv_clear_cloud_bind();
       break;
     #if HAS_BED_PROBE
       case NOZZLE_PROBE_OFFSET_UI:
@@ -1499,7 +1499,7 @@ void draw_return_ui() {
         lv_draw_manualLevel();
         break;
       case BIND_UI:
-        //draw_bind();
+        lv_draw_cloud_bind();
         break;
       #if HAS_BED_PROBE
         case NOZZLE_PROBE_OFFSET_UI:
