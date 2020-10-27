@@ -1140,13 +1140,13 @@
 
 // The size of the print bed
 #define X_BED_SIZE 235
-#define Y_BED_SIZE 231
+#define Y_BED_SIZE 232
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS 0
-#define Y_MIN_POS -8
+#define X_MIN_POS 1
+#define Y_MIN_POS -7
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE
+#define X_MAX_POS X_BED_SIZE+X_MIN_POS
 #define Y_MAX_POS Y_BED_SIZE
 #define Z_MAX_POS 230
 
@@ -1520,7 +1520,7 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 195
+#define PREHEAT_1_TEMP_HOTEND 150
 #define PREHEAT_1_TEMP_BED     45
 #define PREHEAT_1_FAN_SPEED     64 // Value from 0 to 255
 
@@ -1530,7 +1530,7 @@
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_3_LABEL       "PETG"
-#define PREHEAT_3_TEMP_HOTEND 235
+#define PREHEAT_3_TEMP_HOTEND 180
 #define PREHEAT_3_TEMP_BED    60
 #define PREHEAT_3_FAN_SPEED     64 // Value from 0 to 255
 

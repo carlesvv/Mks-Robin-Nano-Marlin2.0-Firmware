@@ -3208,6 +3208,10 @@
   #define USER_DESC_4 "Aparcar"
   #define USER_GCODE_4 "G91\nG1 Z5\nG90\nG1 X0 Y0"
 
+  #define USER_CMD_5_ENABLE
+  #define USER_DESC_5 "Resetejar"
+  #define USER_GCODE_5 "M502\nM500\nM501"
+
   //#define USER_CMD_5_ENABLE
   //#define USER_DESC_5 "More1"
   //#define USER_GCODE_5 "G28"
