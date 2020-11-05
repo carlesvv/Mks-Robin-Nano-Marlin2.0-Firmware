@@ -132,10 +132,10 @@
 #endif
 
 //#define MKS_TEST
-#define USE_WIFI_FUNCTION   1
+#define USE_WIFI_FUNCTION   0
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Ender 3 Pro TMB"
+#define CUSTOM_MACHINE_NAME "Ender 5 Plus TMB"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -583,7 +583,7 @@
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 180
+#define EXTRUDE_MINTEMP 185
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
@@ -1004,7 +1004,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -39, -14.5, -0.95 }
+#define NOZZLE_TO_PROBE_OFFSET { -39, -5, -0.95 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1140,16 +1140,16 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 235
-#define Y_BED_SIZE 232
+#define X_BED_SIZE 360
+#define Y_BED_SIZE 360
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS 1
-#define Y_MIN_POS -7
+#define X_MIN_POS 0
+#define Y_MIN_POS 0
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE+X_MIN_POS
+#define X_MAX_POS X_BED_SIZE/*+X_MIN_POS*/
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 230
+#define Z_MAX_POS 400
 
 /**
  * Software Endstops
@@ -1522,7 +1522,7 @@
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
 #define PREHEAT_1_TEMP_HOTEND 150
-#define PREHEAT_1_TEMP_BED     45
+#define PREHEAT_1_TEMP_BED     60
 #define PREHEAT_1_FAN_SPEED     64 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
@@ -1532,7 +1532,7 @@
 
 #define PREHEAT_3_LABEL       "PETG"
 #define PREHEAT_3_TEMP_HOTEND 180
-#define PREHEAT_3_TEMP_BED    60
+#define PREHEAT_3_TEMP_BED    70
 #define PREHEAT_3_FAN_SPEED     64 // Value from 0 to 255
 
 /**
