@@ -1158,7 +1158,7 @@
    * an option on the LCD screen to continue the print from the last-known
    * point in the file.
    */
-  #define POWER_LOSS_RECOVERY
+  //#define POWER_LOSS_RECOVERY
   #if ENABLED(POWER_LOSS_RECOVERY)
     #define PLR_ENABLED_DEFAULT   true // Power Loss Recovery enabled by default. (Set with 'M413 Sn' & M500)
     #define BACKUP_POWER_SUPPLY       // Backup power / UPS to move the steppers on power loss
@@ -2227,7 +2227,7 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT       560        // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT       750        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     64    // 0..256
     #define X_RSENSE          0.11
@@ -2235,7 +2235,7 @@
   #endif
 
   #if AXIS_IS_TMC(X2)
-    #define X2_CURRENT      560
+    #define X2_CURRENT      750
     #define X2_CURRENT_HOME X2_CURRENT
     #define X2_MICROSTEPS    64
     #define X2_RSENSE         0.11
@@ -2243,7 +2243,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT       560
+    #define Y_CURRENT       750
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     64
     #define Y_RSENSE          0.11
@@ -2251,7 +2251,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y2)
-    #define Y2_CURRENT      560
+    #define Y2_CURRENT      750
     #define Y2_CURRENT_HOME Y2_CURRENT
     #define Y2_MICROSTEPS    64
     #define Y2_RSENSE         0.11
@@ -2259,7 +2259,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT       710
+    #define Z_CURRENT       750
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     64
     #define Z_RSENSE          0.11
@@ -2267,7 +2267,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z2)
-    #define Z2_CURRENT      710
+    #define Z2_CURRENT      750
     #define Z2_CURRENT_HOME Z2_CURRENT
     #define Z2_MICROSTEPS    64
     #define Z2_RSENSE         0.11
@@ -2275,7 +2275,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z3)
-    #define Z3_CURRENT      710
+    #define Z3_CURRENT      750
     #define Z3_CURRENT_HOME Z3_CURRENT
     #define Z3_MICROSTEPS    64
     #define Z3_RSENSE         0.11
@@ -2283,7 +2283,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z4)
-    #define Z4_CURRENT      710
+    #define Z4_CURRENT      750
     #define Z4_CURRENT_HOME Z4_CURRENT
     #define Z4_MICROSTEPS    64
     #define Z4_RSENSE         0.11

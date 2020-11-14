@@ -495,10 +495,10 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
-  // Creality Ender-3	
-  #define DEFAULT_Kp 23.21
-  #define DEFAULT_Ki 1.74
-  #define DEFAULT_Kd 77.22
+  // Creality Ender-5 Plus
+  #define DEFAULT_Kp 15.96
+  #define DEFAULT_Ki 1.12
+  #define DEFAULT_Kd 56.60
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -552,9 +552,9 @@
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 42.16
+  #define DEFAULT_bedKp 40.92
   #define DEFAULT_bedKi 7.97
-  #define DEFAULT_bedKd 148.71
+  #define DEFAULT_bedKd 139.97
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
