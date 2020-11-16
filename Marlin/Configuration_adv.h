@@ -2259,7 +2259,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT       700
+    #define Z_CURRENT       900
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     64
     #define Z_RSENSE          0.11
@@ -2267,7 +2267,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z2)
-    #define Z2_CURRENT      700
+    #define Z2_CURRENT      900
     #define Z2_CURRENT_HOME Z2_CURRENT
     #define Z2_MICROSTEPS    64
     #define Z2_RSENSE         0.11
@@ -2275,7 +2275,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z3)
-    #define Z3_CURRENT      700
+    #define Z3_CURRENT      900
     #define Z3_CURRENT_HOME Z3_CURRENT
     #define Z3_MICROSTEPS    64
     #define Z3_RSENSE         0.11
@@ -2283,7 +2283,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z4)
-    #define Z4_CURRENT      700
+    #define Z4_CURRENT      900
     #define Z4_CURRENT_HOME Z4_CURRENT
     #define Z4_MICROSTEPS    64
     #define Z4_RSENSE         0.11
@@ -2291,56 +2291,56 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT      610
+    #define E0_CURRENT      700
     #define E0_MICROSTEPS    64
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E1)
-    #define E1_CURRENT      610
+    #define E1_CURRENT      700
     #define E1_MICROSTEPS    64
     #define E1_RSENSE         0.11
     #define E1_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E2)
-    #define E2_CURRENT      610
+    #define E2_CURRENT      700
     #define E2_MICROSTEPS    64
     #define E2_RSENSE         0.11
     #define E2_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E3)
-    #define E3_CURRENT      610
+    #define E3_CURRENT      700
     #define E3_MICROSTEPS    64
     #define E3_RSENSE         0.11
     #define E3_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E4)
-    #define E4_CURRENT      610
+    #define E4_CURRENT      700
     #define E4_MICROSTEPS    64
     #define E4_RSENSE         0.11
     #define E4_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E5)
-    #define E5_CURRENT      610
+    #define E5_CURRENT      700
     #define E5_MICROSTEPS    64
     #define E5_RSENSE         0.11
     #define E5_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E6)
-    #define E6_CURRENT      610
+    #define E6_CURRENT      700
     #define E6_MICROSTEPS    64
     #define E6_RSENSE         0.11
     #define E6_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E7)
-    #define E7_CURRENT      610
+    #define E7_CURRENT      700
     #define E7_MICROSTEPS    64
     #define E7_RSENSE         0.11
     #define E7_CHAIN_POS     -1
