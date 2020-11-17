@@ -971,7 +971,7 @@
 //#define MICROSTEP32 HIGH,LOW,HIGH
 
 // Microstep settings (Requires a board with pins named X_MS1, X_MS2, etc.)
-#define MICROSTEP_MODES { 64, 64, 64, 64, 64, 64 } // [1,2,4,8,16]
+#define MICROSTEP_MODES { 8, 16, 32, 64} // [1,2,4,8,16]
 
 /**
  *  @section  stepper motor current
@@ -2269,7 +2269,7 @@
   #if AXIS_IS_TMC(Z2)
     #define Z2_CURRENT      710
     #define Z2_CURRENT_HOME Z2_CURRENT
-    #define Z2_MICROSTEPS    64
+    #define Z2_MICROSTEPS    16
     #define Z2_RSENSE         0.11
     #define Z2_CHAIN_POS     -1
   #endif
@@ -2277,7 +2277,7 @@
   #if AXIS_IS_TMC(Z3)
     #define Z3_CURRENT      710
     #define Z3_CURRENT_HOME Z3_CURRENT
-    #define Z3_MICROSTEPS    64
+    #define Z3_MICROSTEPS    16
     #define Z3_RSENSE         0.11
     #define Z3_CHAIN_POS     -1
   #endif
@@ -2285,7 +2285,7 @@
   #if AXIS_IS_TMC(Z4)
     #define Z4_CURRENT      710
     #define Z4_CURRENT_HOME Z4_CURRENT
-    #define Z4_MICROSTEPS    64
+    #define Z4_MICROSTEPS    16
     #define Z4_RSENSE         0.11
     #define Z4_CHAIN_POS     -1
   #endif
