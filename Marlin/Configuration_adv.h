@@ -2419,8 +2419,8 @@
    * When disabled, Marlin will use spreadCycle stepping mode.
    */
   #define STEALTHCHOP_XY
-  //#define STEALTHCHOP_Z
-  //#define STEALTHCHOP_E
+  #define STEALTHCHOP_Z
+  #define STEALTHCHOP_E
 
   /**
    * Optimize spreadCycle chopper parameters by using predefined parameter sets
@@ -2471,18 +2471,18 @@
   #define X2_HYBRID_THRESHOLD    150
   #define Y_HYBRID_THRESHOLD     150
   #define Y2_HYBRID_THRESHOLD    150
-  // #define Z_HYBRID_THRESHOLD       6
-  // #define Z2_HYBRID_THRESHOLD      6
-  // #define Z3_HYBRID_THRESHOLD      6
-  // #define Z4_HYBRID_THRESHOLD      6
-  // #define E0_HYBRID_THRESHOLD     60
-  // #define E1_HYBRID_THRESHOLD     60
-  // #define E2_HYBRID_THRESHOLD     60
-  // #define E3_HYBRID_THRESHOLD     60
-  // #define E4_HYBRID_THRESHOLD     60
-  // #define E5_HYBRID_THRESHOLD     60
-  // #define E6_HYBRID_THRESHOLD     60
-  // #define E7_HYBRID_THRESHOLD     60
+  #define Z_HYBRID_THRESHOLD       0
+  #define Z2_HYBRID_THRESHOLD      0
+  #define Z3_HYBRID_THRESHOLD      0
+  #define Z4_HYBRID_THRESHOLD      0
+  #define E0_HYBRID_THRESHOLD      0
+  #define E1_HYBRID_THRESHOLD      0
+  #define E2_HYBRID_THRESHOLD      0
+  #define E3_HYBRID_THRESHOLD      0
+  #define E4_HYBRID_THRESHOLD      0
+  #define E5_HYBRID_THRESHOLD      0
+  #define E6_HYBRID_THRESHOLD      0
+  #define E7_HYBRID_THRESHOLD      0
 
   /**
    * Use StallGuard2 to home / probe X, Y, Z.
