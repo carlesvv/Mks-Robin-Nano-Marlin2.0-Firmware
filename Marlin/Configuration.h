@@ -697,7 +697,7 @@
  */
 #define X_DRIVER_TYPE  TMC2209
 #define Y_DRIVER_TYPE  TMC2209
-//#define Z_DRIVER_TYPE  TMC2209
+#define Z_DRIVER_TYPE  TMC2209
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
@@ -758,7 +758,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 319.916, 320.712, 796.017, 1669.33 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 319.916, 320.712, 796.017, 417.33 }
 
 /**
  * Default Max Feed Rate (mm/s)

@@ -2292,56 +2292,56 @@
 
   #if AXIS_IS_TMC(E0)
     #define E0_CURRENT      700
-    #define E0_MICROSTEPS    64
+    #define E0_MICROSTEPS    16
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E1)
     #define E1_CURRENT      700
-    #define E1_MICROSTEPS    64
+    #define E1_MICROSTEPS    16
     #define E1_RSENSE         0.11
     #define E1_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E2)
     #define E2_CURRENT      700
-    #define E2_MICROSTEPS    64
+    #define E2_MICROSTEPS    16
     #define E2_RSENSE         0.11
     #define E2_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E3)
     #define E3_CURRENT      700
-    #define E3_MICROSTEPS    64
+    #define E3_MICROSTEPS    16
     #define E3_RSENSE         0.11
     #define E3_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E4)
     #define E4_CURRENT      700
-    #define E4_MICROSTEPS    64
+    #define E4_MICROSTEPS    16
     #define E4_RSENSE         0.11
     #define E4_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E5)
     #define E5_CURRENT      700
-    #define E5_MICROSTEPS    64
+    #define E5_MICROSTEPS    16
     #define E5_RSENSE         0.11
     #define E5_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E6)
     #define E6_CURRENT      700
-    #define E6_MICROSTEPS    64
+    #define E6_MICROSTEPS    16
     #define E6_RSENSE         0.11
     #define E6_CHAIN_POS     -1
   #endif
 
   #if AXIS_IS_TMC(E7)
     #define E7_CURRENT      700
-    #define E7_MICROSTEPS    64
+    #define E7_MICROSTEPS    16
     #define E7_RSENSE         0.11
     #define E7_CHAIN_POS     -1
   #endif
@@ -2471,18 +2471,18 @@
   #define X2_HYBRID_THRESHOLD    150
   #define Y_HYBRID_THRESHOLD     150
   #define Y2_HYBRID_THRESHOLD    150
-  #define Z_HYBRID_THRESHOLD       3
-  #define Z2_HYBRID_THRESHOLD      3
-  #define Z3_HYBRID_THRESHOLD      3
-  #define Z4_HYBRID_THRESHOLD      3
-  #define E0_HYBRID_THRESHOLD     30
-  #define E1_HYBRID_THRESHOLD     30
-  #define E2_HYBRID_THRESHOLD     30
-  #define E3_HYBRID_THRESHOLD     30
-  #define E4_HYBRID_THRESHOLD     30
-  #define E5_HYBRID_THRESHOLD     30
-  #define E6_HYBRID_THRESHOLD     30
-  #define E7_HYBRID_THRESHOLD     30
+  #define Z_HYBRID_THRESHOLD       0
+  #define Z2_HYBRID_THRESHOLD      0
+  #define Z3_HYBRID_THRESHOLD      0
+  #define Z4_HYBRID_THRESHOLD      0
+  #define E0_HYBRID_THRESHOLD      0
+  #define E1_HYBRID_THRESHOLD      0
+  #define E2_HYBRID_THRESHOLD      0
+  #define E3_HYBRID_THRESHOLD      0
+  #define E4_HYBRID_THRESHOLD      0
+  #define E5_HYBRID_THRESHOLD      0
+  #define E6_HYBRID_THRESHOLD      0
+  #define E7_HYBRID_THRESHOLD      0
 
   /**
    * Use StallGuard2 to home / probe X, Y, Z.
