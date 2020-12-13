@@ -496,9 +496,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Creality Ender-3	Pro
-  #define DEFAULT_Kp 26.08
-  #define DEFAULT_Ki 2.18
-  #define DEFAULT_Kd 77.87
+  #define DEFAULT_Kp 24.69
+  #define DEFAULT_Ki 1.99
+  #define DEFAULT_Kd 76.71
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -553,9 +553,9 @@
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   // Creality Ender-3	Pro
-  #define DEFAULT_bedKp 67.70
-  #define DEFAULT_bedKi 13.20
-  #define DEFAULT_bedKd 231.55
+  #define DEFAULT_bedKp 40.39
+  #define DEFAULT_bedKi 7.75
+  #define DEFAULT_bedKd 140.30
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
@@ -1030,7 +1030,7 @@
  * A total of 3 or more adds more slow probes, taking the average.
  */
 #define MULTIPLE_PROBING 3
-#define EXTRA_PROBING    1
+//#define EXTRA_PROBING    1
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
