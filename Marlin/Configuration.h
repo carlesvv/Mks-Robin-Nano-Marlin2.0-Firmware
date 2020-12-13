@@ -71,7 +71,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(TheMacBoy, Ender 3 Pro)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(TheMacBoy, Ender-3 Pro)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -135,7 +135,7 @@
 #define USE_WIFI_FUNCTION   1
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Ender 3 Pro TMB"
+#define CUSTOM_MACHINE_NAME "Ender-3 Pro TMB"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -495,7 +495,7 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
-  // Creality Ender-3	
+  // Creality Ender-3	Pro
   #define DEFAULT_Kp 26.08
   #define DEFAULT_Ki 2.18
   #define DEFAULT_Kd 77.87
@@ -552,6 +552,7 @@
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
+  // Creality Ender-3	Pro
   #define DEFAULT_bedKp 67.70
   #define DEFAULT_bedKi 13.20
   #define DEFAULT_bedKd 231.55
@@ -1028,8 +1029,8 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-//#define MULTIPLE_PROBING 2
-//#define EXTRA_PROBING    1
+#define MULTIPLE_PROBING 3
+#define EXTRA_PROBING    1
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
