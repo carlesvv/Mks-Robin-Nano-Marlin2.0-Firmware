@@ -132,7 +132,6 @@
 #endif
 
 //#define MKS_TEST
-#define USE_WIFI_FUNCTION   1
 
 // Name displayed in the LCD "Ready" message and Info menu
 #define CUSTOM_MACHINE_NAME "Ender-3 Pro TMB"
@@ -2253,6 +2252,10 @@
 //
 //#define TFT_LVGL_UI_FSMC  // Robin nano v1.2 uses FSMC
 #define TFT_LVGL_UI_SPI   // Robin nano v2.0 uses SPI
+
+#if EITHER(TFT_LVGL_UI_FSMC, TFT_LVGL_UI_SPI)
+  #define USE_WIFI_FUNCTION   1
+#endif
 
 //=============================================================================
 //============================  Other Controllers  ============================
