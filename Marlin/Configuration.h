@@ -552,9 +552,9 @@
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   // Creality Ender-3	Pro
-  #define DEFAULT_bedKp 40.39
-  #define DEFAULT_bedKi 7.75
-  #define DEFAULT_bedKd 140.30
+  #define DEFAULT_bedKp 50.14
+  #define DEFAULT_bedKi 8.77
+  #define DEFAULT_bedKd 171.48
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
@@ -842,7 +842,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-#define S_CURVE_ACCELERATION
+//#define S_CURVE_ACCELERATION
 
 //===========================================================================
 //============================= Z Probe Options =============================
