@@ -24,18 +24,14 @@
 #if BOTH(HAS_TFT_LVGL_UI, ADVANCED_PAUSE_FEATURE)
 
 #include "draw_ui.h"
-#include "lv_conf.h"
-//#include "../lvgl/src/lv_objx/lv_imgbtn.h"
-//#include "../lvgl/src/lv_objx/lv_img.h"
-//#include "../lvgl/src/lv_core/lv_disp.h"
-//#include "../lvgl/src/lv_core/lv_refr.h"
+#include <lv_conf.h>
 
-#include "../../../../MarlinCore.h"
 #include "../../../../feature/pause.h"
+#include "../../../../inc/MarlinConfig.h"
 
 void lv_draw_pause_message(const PauseMessage msg) {
   switch (msg) {
-    case PAUSE_MESSAGE_PARKING:  clear_cur_ui(); lv_draw_dialog(DIALOG_PAUSE_MESSAGE_PAUSING); break;
+    case PAUSE_MESSAGE_PAUSING:  clear_cur_ui(); lv_draw_dialog(DIALOG_PAUSE_MESSAGE_PAUSING); break;
     case PAUSE_MESSAGE_CHANGING: clear_cur_ui(); lv_draw_dialog(DIALOG_PAUSE_MESSAGE_CHANGING); break;
     case PAUSE_MESSAGE_UNLOAD:   clear_cur_ui(); lv_draw_dialog(DIALOG_PAUSE_MESSAGE_UNLOAD); break;
     case PAUSE_MESSAGE_WAITING:  clear_cur_ui(); lv_draw_dialog(DIALOG_PAUSE_MESSAGE_WAITING); break;
