@@ -129,7 +129,7 @@
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
   #define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V2
-  // #define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V3
+  //#define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V3
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
@@ -2331,7 +2331,7 @@
 //
 // 320x240, 2.4", FSMC Display From MKS
 // Normally used in MKS Robin Nano V1.2
-
+//
 // #define MKS_ROBIN_TFT24
 
 //
@@ -2381,8 +2381,6 @@
 //
 // 320x240, 2.8", FSMC Stock Display from ET4
 //
-//#define TFT_LVGL_UI_FSMC  // Robin nano v1.2 uses FSMC
-//#define TFT_LVGL_UI_SPI   // Robin nano v2.0 uses SPI
 //#define ANET_ET4_TFT28
 
 //
@@ -2425,6 +2423,8 @@
 #if ENABLED(TFT_LVGL_UI)
   #define MKS_WIFI_MODULE  // MKS WiFi module
 #endif
+//#define TFT_LVGL_UI_FSMC  // Robin nano v1.2 uses FSMC
+//#define TFT_LVGL_UI_SPI   // Robin nano v2.0 uses SPI
 
 /**
  * TFT Rotation. Set to one of the following values:
