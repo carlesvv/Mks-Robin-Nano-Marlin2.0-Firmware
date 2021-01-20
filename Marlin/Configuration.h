@@ -2323,9 +2323,9 @@
 // Normally used in MKS Robin Nano V2
 //
 #define MKS_TS35_V2_0
-//#define TFT_320x240	
-//#define TFT_320x240_SPI	
-//#define TFT_480x320	
+//#define TFT_320x240
+//#define TFT_320x240_SPI
+//#define TFT_480x320
 //#define TFT_480x320_SPI
 
 //
@@ -2423,7 +2423,7 @@
 #if ENABLED(TFT_LVGL_UI)
   #define MKS_WIFI_MODULE  // MKS WiFi module
 #endif
-//#define TFT_LVGL_UI_FSMC  // Robin nano v1.2 uses FSMC	
+//#define TFT_LVGL_UI_FSMC  // Robin nano v1.2 uses FSMC
 //#define TFT_LVGL_UI_SPI   // Robin nano v2.0 uses SPI
 
 /**
@@ -2434,7 +2434,7 @@
  *   TFT_ROTATE_270, TFT_ROTATE_270_MIRROR_X, TFT_ROTATE_270_MIRROR_Y,
  *   TFT_MIRROR_X, TFT_MIRROR_Y, TFT_NO_ROTATION
  */
-//#define TFT_ROTATION TFT_NO_ROTATION
+// #define TFT_ROTATION TFT_ROTATE_180
 
 //=============================================================================
 //============================  Other Controllers  ============================

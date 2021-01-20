@@ -106,8 +106,8 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         TERN_(EEPROM_SETTINGS, (void)settings.save());
         has_adjust_z = 0;
       }
-      clear_cur_ui();
-      draw_return_ui();
+      lv_clear_cur_ui();
+      lv_draw_return_ui();
       break;
   }
 }
@@ -162,7 +162,10 @@ void disp_baby_step_dist() {
 
 void disp_z_offset_value() {
   char buf[20];
-  sprintf_P(buf, PSTR("offset Z: %.3f"), (float)TERN(HAS_BED_PROBE, probe.offset.z, 0));
+  #if HAS_BED_PROBE
+   char str_1[16];
+  #endif
+  sprintf_P(buf, PSTR("offset Z: %s"), TERN(HAS_BED_PROBE, dtostrf(probe.offset.z, 1, 3, str_1), "0"));
   lv_label_set_text(zOffsetText, buf);
 }
 

@@ -614,11 +614,11 @@ char *creat_title_text() {
     #if ENABLED(SDSUPPORT)
       uint32_t pre_read_cnt = 0;
       uint32_t *p1;
-      char *cur_name;
+      //char *cur_name;
 
       gPicturePreviewStart = 0;
-      cur_name             = strrchr(path, '/');
-      card.openFileRead(cur_name);
+      //cur_name             = strrchr(path, '/');
+      card.openFileRead(path);
       card.read(public_buf, 512);
       p1 = (uint32_t *)strstr((char *)public_buf, ";simage:");
 
@@ -644,10 +644,10 @@ char *creat_title_text() {
     #if ENABLED(SDSUPPORT)
       volatile uint32_t i, j;
       volatile uint16_t *p_index;
-      char *cur_name;
+      //char *cur_name;
 
-      cur_name = strrchr(path, '/');
-      card.openFileRead(cur_name);
+      //cur_name = strrchr(path, '/');
+      card.openFileRead(path);
 
       if (gPicturePreviewStart <= 0) {
         while (1) {
@@ -696,23 +696,25 @@ char *creat_title_text() {
         gcode_preview_over = false;
 
         card.closefile();
-        char *cur_name;
+        //char *cur_name;
 
-        cur_name = strrchr(list_file.file_name[sel_id], '/');
+        //cur_name = strrchr(list_file.file_name[sel_id], '/');
 
-        SdFile file;
-        SdFile *curDir;
+        //SdFile file;
+        //SdFile *curDir;
         card.endFilePrint();
-        const char * const fname = card.diveToFile(true, curDir, cur_name);
-        if (!fname) return;
-        if (file.open(curDir, fname, O_READ)) {
-          gCfgItems.curFilesize = file.fileSize();
-          file.close();
-          update_spi_flash();
-        }
+        //const char * const fname = card.diveToFile(true, curDir, cur_name);
+        //if (!fname) return;
+        //if (file.open(curDir, fname, O_READ)) {
+          //gCfgItems.curFilesize = file.fileSize();
+          //file.close();
+          //update_spi_flash();
+        //}
 
-        card.openFileRead(cur_name);
+        card.openFileRead(list_file.file_name[sel_id]);
         if (card.isFileOpen()) {
+          gCfgItems.curFilesize = card.getFileSize();
+          update_spi_flash();
           feedrate_percentage = 100;
           planner.flow_percentage[0] = 100;
           planner.e_factor[0]        = planner.flow_percentage[0] * 0.01;
@@ -937,7 +939,7 @@ void GUI_RefreshPage() {
   print_time_run();
 }
 
-void clear_cur_ui() {
+void lv_clear_cur_ui() {
   last_disp_state = disp_state_stack._disp_state[disp_state_stack._disp_index];
 
   switch (disp_state_stack._disp_state[disp_state_stack._disp_index]) {
@@ -1036,7 +1038,7 @@ void clear_cur_ui() {
   }
 }
 
-void draw_return_ui() {
+void lv_draw_return_ui() {
   if (disp_state_stack._disp_index > 0) {
     disp_state_stack._disp_index--;
 
@@ -1443,6 +1445,28 @@ void print_time_count() {
   if (print_time.start == 1) print_time.seconds++;
 }
 
+void lv_print_finished() {
+  if (once_flag == 0) {
+    stop_print_time();
+
+    flash_preview_begin = false;
+    default_preview_flg = false;
+    lv_clear_cur_ui();
+    lv_draw_dialog(DIALOG_TYPE_FINISH_PRINT);
+
+    once_flag = true;
+
+    #if HAS_SUICIDE
+      if (gCfgItems.finish_power_off) {
+        gcode.process_subcommands_now_P(PSTR("M1001"));
+        queue.inject_P(PSTR("M81"));
+        marlin_state = MF_RUNNING;
+      }
+    #endif
+    uiCfg.print_state = IDLE;
+  }
+}
+
 void LV_TASK_HANDLER() {
   lv_task_handler();
   if (mks_test_flag == 0x1E) mks_hardware_test();
@@ -1456,6 +1480,7 @@ void LV_TASK_HANDLER() {
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_update_encoder();
   #endif
+  if (marlin_state == MF_SD_COMPLETE) lv_print_finished();
 }
 
 #endif // HAS_TFT_LVGL_UI

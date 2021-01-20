@@ -29,6 +29,7 @@
 #include "../../../../module/temperature.h"
 #include "../../../../gcode/queue.h"
 #include "../../../../inc/MarlinConfig.h"
+#include "../../../../module/planner.h"
 
 static lv_obj_t *scr;
 extern lv_group_t *g;
@@ -111,8 +112,11 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       disp_ext_speed();
       break;
     case ID_E_RETURN:
-      clear_cur_ui();
-      draw_return_ui();
+      feedrate_mm_s = (float)uiCfg.moveSpeed_bak;
+      if(uiCfg.print_state == PAUSED)
+        planner.set_e_position_mm((destination.e = current_position.e = uiCfg.current_e_position_bak));
+      lv_clear_cur_ui();
+      lv_draw_return_ui();
       break;
   }
 }
