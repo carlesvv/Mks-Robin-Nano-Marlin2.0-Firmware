@@ -237,16 +237,16 @@ static void disp_key_value() {
     #if HAS_BED_PROBE
       case x_offset:
         #if HAS_PROBE_XY_OFFSET
-        sprintf_P(public_buf_m, PSTR("%.1f"), probe.offset.x);
+        sprintf_P(public_buf_m, PSTR("%s"), dtostrf(probe.offset.x, 1, 3, str_1));
         #endif
         break;
       case y_offset:
         #if HAS_PROBE_XY_OFFSET
-        sprintf_P(public_buf_m, PSTR("%.1f"), probe.offset.y);
+        sprintf_P(public_buf_m, PSTR("%s"), dtostrf(probe.offset.x, 1, 3, str_1));
         #endif
         break;
       case z_offset:
-        sprintf_P(public_buf_m, PSTR("%.1f"), probe.offset.z);
+        sprintf_P(public_buf_m, PSTR("%s"), dtostrf(probe.offset.x, 1, 3, str_1));
         break;
     #endif
     case load_length:
@@ -652,7 +652,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       last_disp_state = NUMBER_KEY_UI;
       if (strlen(key_value) != 0) set_value_confirm();
       lv_clear_number_key();
-      draw_return_ui();
+      lv_draw_return_ui();
       break;
   }
 }
@@ -660,7 +660,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
 void lv_draw_number_key(void) {
   scr = lv_screen_create(NUMBER_KEY_UI, "");
 
-  buttonValue = lv_btn_create(scr, 92, 40, 296, 40, event_handler, ID_NUM_KEY1, &style_num_text);
+  buttonValue = lv_btn_create(scr, 92, 40, 296, 40, event_handler, 0, &style_num_text);
   labelValue = lv_label_create_empty(buttonValue);
 
   lv_obj_t *NumberKey_1 = lv_btn_create(scr, 92, 90, 68, 40, event_handler, ID_NUM_KEY1, &style_num_key_pre);
