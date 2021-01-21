@@ -742,7 +742,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 319.916, 320.712, 796.017, 417.33 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 319.916, 320.712, 1600, 417.33 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1043,7 +1043,7 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-#define MULTIPLE_PROBING 3
+//#define MULTIPLE_PROBING 3
 //#define EXTRA_PROBING    1
 
 /**
