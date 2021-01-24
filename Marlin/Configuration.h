@@ -993,7 +993,7 @@
  *     O-- FRONT --+
  */
 //#define NOZZLE_TO_PROBE_OFFSET { -29.87, 4.159, -0.65} // inductiu
-#define NOZZLE_TO_PROBE_OFFSET { -58.5316, 5.85755, -2.254} // BL Touch
+#define NOZZLE_TO_PROBE_OFFSET { -58.5316, 5.85755, -2.304} // BL Touch
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1604,7 +1604,7 @@
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
 #define PREHEAT_1_TEMP_HOTEND 150
-#define PREHEAT_1_TEMP_BED     60
+#define PREHEAT_1_TEMP_BED     65
 #define PREHEAT_1_FAN_SPEED     64 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
@@ -1613,8 +1613,8 @@
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_3_LABEL       "PETG"
-#define PREHEAT_3_TEMP_HOTEND 180
-#define PREHEAT_3_TEMP_BED    70
+#define PREHEAT_3_TEMP_HOTEND 185
+#define PREHEAT_3_TEMP_BED    75
 #define PREHEAT_3_FAN_SPEED     64 // Value from 0 to 255
 
 /**
