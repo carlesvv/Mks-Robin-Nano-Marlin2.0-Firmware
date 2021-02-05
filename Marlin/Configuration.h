@@ -2463,7 +2463,7 @@
   //#define TOUCH_ORIENTATION   TOUCH_LANDSCAPE
 
   #if ENABLED(TFT_COLOR_UI)
-    //#define SINGLE_TOUCH_NAVIGATION
+    #define SINGLE_TOUCH_NAVIGATION
   #endif
 #endif
 
