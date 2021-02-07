@@ -744,7 +744,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 82.05, 81.42, 1600, 415 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.244, 79.901, 1600, 415 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1165,10 +1165,10 @@
 
 // The size of the print bed
 #define X_BED_SIZE 220
-#define Y_BED_SIZE 220
+#define Y_BED_SIZE 219
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS -5
+#define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
@@ -2464,7 +2464,7 @@
   //#define TOUCH_ORIENTATION   TOUCH_LANDSCAPE
 
   #if ENABLED(TFT_COLOR_UI)
-    //#define SINGLE_TOUCH_NAVIGATION
+    #define SINGLE_TOUCH_NAVIGATION
   #endif
 #endif
 
