@@ -497,10 +497,10 @@
     #define DEFAULT_Ki_LIST {   1.99,   1.99 }
     #define DEFAULT_Kd_LIST { 76.71, 76.71 }
   #else
-  // Creality Sapphire Pro
-  #define DEFAULT_Kp 8.41
-  #define DEFAULT_Ki 0.41
-  #define DEFAULT_Kd 43.21
+  // Sapphire Pro
+  #define DEFAULT_Kp 10.36
+  #define DEFAULT_Ki 0.51
+  #define DEFAULT_Kd 52.94
   #endif
 #endif // PIDTEMP
 
@@ -539,10 +539,10 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  // Creality Sapphire Pro
-  #define DEFAULT_bedKp 50.14
-  #define DEFAULT_bedKi 8.77
-  #define DEFAULT_bedKd 171.48
+  // Sapphire Pro
+  #define DEFAULT_bedKp 36.04
+  #define DEFAULT_bedKi 7.02
+  #define DEFAULT_bedKd 123.30
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -689,7 +689,7 @@
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE TMC2208_STANDALONE
+#define E0_DRIVER_TYPE TMC2209_STANDALONE
 //#define E1_DRIVER_TYPE TMC2209
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -744,7 +744,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.244, 79.901, 1600, 415 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.488, 159.802, 1600, 459.833 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -994,7 +994,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { +17, -45, -2.425 }
+#define NOZZLE_TO_PROBE_OFFSET { +17, -45, -1.290 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
