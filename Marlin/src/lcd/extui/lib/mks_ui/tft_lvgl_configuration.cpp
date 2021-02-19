@@ -134,6 +134,18 @@ void tft_lvgl_init() {
   SPI_TFT.spi_init(SPI_FULL_SPEED);
   SPI_TFT.LCD_init();
 
+  #if ENABLED(USB_FLASH_DRIVE_SUPPORT)
+    uint16_t usb_flash_loop = 1000;
+    do {
+      Sd2Card::idle();
+      watchdog_refresh();
+      delay(2);
+    } while((!Sd2Card::isInserted()) && (usb_flash_loop--));
+    card.mount();
+  #elif HAS_LOGO_IN_FLASH
+    delay(2000);
+  #endif
+  
   watchdog_refresh();     // LVGL init takes time
 
   #if ENABLED(SDSUPPORT)
@@ -224,9 +236,13 @@ void tft_lvgl_init() {
 
       uiCfg.print_state = REPRINTING;
 
-      strncpy(public_buf_m, recovery.info.sd_filename, sizeof(public_buf_m));
-      card.printLongPath(public_buf_m);
-      strncpy(list_file.long_name[sel_id], card.longFilename, sizeof(list_file.long_name[sel_id]));
+      #if ENABLED(LONG_FILENAME_HOST_SUPPORT)
+        strncpy(public_buf_m, recovery.info.sd_filename, sizeof(public_buf_m));
+        card.printLongPath(public_buf_m);
+        strncpy(list_file.long_name[sel_id], card.longFilename, sizeof(list_file.long_name[sel_id]));
+      #else
+        strncpy(list_file.long_name[sel_id], recovery.info.sd_filename, sizeof(list_file.long_name[sel_id]));
+      #endif
       lv_draw_printing();
     }
   #endif
