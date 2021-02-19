@@ -410,7 +410,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 5
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -1485,7 +1485,7 @@
  * Commands to execute at the end of G29 probing.
  * Useful to retract or move the Z probe out of the way.
  */
-#define Z_PROBE_END_SCRIPT "G91;\n1G1 Z10 F12000;\nG90;\nG1 X5 F3600;\nG1 Y185 F3600;"	
+#define Z_PROBE_END_SCRIPT "G91;\n1G1 Z10 F12000;\nG90;\nG1 X5 F3600;\nG1 Y185 F3600;\nM500;"	
 
 // @section homing
 
@@ -1625,7 +1625,7 @@
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
 #define PREHEAT_1_TEMP_HOTEND 150
-#define PREHEAT_1_TEMP_BED     60
+#define PREHEAT_1_TEMP_BED     55
 #define PREHEAT_1_FAN_SPEED     64 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
@@ -1635,7 +1635,7 @@
 
 #define PREHEAT_3_LABEL       "PETG"
 #define PREHEAT_3_TEMP_HOTEND 180
-#define PREHEAT_3_TEMP_BED    60
+#define PREHEAT_3_TEMP_BED    65
 #define PREHEAT_3_FAN_SPEED     64 // Value from 0 to 255
 
 /**
