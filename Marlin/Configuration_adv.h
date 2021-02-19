@@ -3371,7 +3371,7 @@
 
   #define USER_CMD_4_ENABLE
   #define USER_DESC_4 "Aparcar"
-  #define USER_GCODE_4 "G91;\nG1 Z10;\nG90;\nG1 X0 Y195;"
+  #define USER_GCODE_4 "G28 X;\nG28 Y;\nG91;\nG1 Z10;\nG90;\nG1 X0 Y195;"
 
   #define USER_CMD_5_ENABLE
   #define USER_DESC_5 "Resetejar"
