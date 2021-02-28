@@ -50,12 +50,7 @@ enum {
 
 static void event_handler(lv_obj_t *obj, lv_event_t event) {
   if (event != LV_EVENT_RELEASED) return;
-  #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
-    bool clear = (obj->mks_obj_id != ID_T_LEVELING);
-  #else
-    constexpr bool clear = true;
-  #endif
-  if (clear) lv_clear_tool();
+  lv_clear_tool();
   switch (obj->mks_obj_id) {
     case ID_T_PRE_HEAT:
       lv_draw_preHeat();
@@ -71,9 +66,8 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       break;
     case ID_T_LEVELING:
       #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
-        get_gcode_command(AUTO_LEVELING_COMMAND_ADDR,(uint8_t *)public_buf_m);
-        public_buf_m[sizeof(public_buf_m)-1] = 0;
-        queue.inject_P(PSTR(public_buf_m));
+        lv_draw_dialog(DIALOG_TYPE_AUTO_LEVELING_TIPS);
+        uiCfg.autoLeveling = 1;
       #else
         uiCfg.leveling_first_time = 1;
         lv_draw_manualLevel();
@@ -83,7 +77,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       uiCfg.desireSprayerTempBak = thermalManager.temp_hotend[uiCfg.curSprayerChoose].target;
       lv_draw_filament_change();
       break;
-    case ID_T_MORE: break;
+    case ID_T_MORE: lv_draw_more(); break;
     case ID_T_RETURN:
       TERN_(MKS_TEST, curent_disp_ui = 1);
       lv_draw_ready_print();
@@ -99,6 +93,7 @@ void lv_draw_tool(void) {
   lv_big_button_create(scr, "F:/bmp_zero.bin", tool_menu.home, BTN_X_PIXEL * 3 + INTERVAL_V * 4, titleHeight, event_handler, ID_T_HOME);
   lv_big_button_create(scr, "F:/bmp_leveling.bin", tool_menu.TERN(AUTO_BED_LEVELING_BILINEAR, autoleveling, leveling), INTERVAL_V, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_LEVELING);
   lv_big_button_create(scr, "F:/bmp_filamentchange.bin", tool_menu.filament, BTN_X_PIXEL+INTERVAL_V*2,BTN_Y_PIXEL+INTERVAL_H+titleHeight, event_handler,ID_T_FILAMENT);
+  lv_big_button_create(scr, "F:/bmp_more.bin", tool_menu.more, BTN_X_PIXEL * 2 + INTERVAL_V * 3, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_MORE);
   lv_big_button_create(scr, "F:/bmp_return.bin", common_menu.text_back, BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_T_RETURN);
 }
 
