@@ -1485,7 +1485,7 @@
  * Commands to execute at the end of G29 probing.
  * Useful to retract or move the Z probe out of the way.
  */
-#define Z_PROBE_END_SCRIPT "G91;\n1G1 Z10 F12000;\nG90;\nG1 X5 F3600;\nG1 Y185 F3600;\nM500;"	
+#define Z_PROBE_END_SCRIPT "G91;\n1G1 Z10 F12000;\nG90;\nG1 X5 F3600;\nG1 Y175 F3600;\nM500;"	
 
 // @section homing
 
@@ -2624,7 +2624,7 @@
  * Set this manually if there are extra servos needing manual control.
  * Set to 0 to turn off servo support.
  */
-#define NUM_SERVOS 1// Servo index starts with 0 for M280 command
+#define NUM_SERVOS 1 // Servo index starts with 0 for M280 command
 
 // (ms) Delay  before the next move will start, to give the servo time to reach its target angle.
 // 300ms is a good value but you can try less delay.
