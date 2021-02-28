@@ -1526,8 +1526,8 @@
     #endif
   #endif
 #endif // HAS_DGUS_LCD
-		
-//	
+
+//
 // Specify additional languages for the UI. Default specified by LCD_LANGUAGE.	
 //	
 #if EITHER(DOGLCD, TOUCH_UI_FTDI_EVE)	
@@ -1539,20 +1539,7 @@
     //#define LCD_LANGUAGE_AUTO_SAVE // Automatically save language to EEPROM on change	
   #endif	
 #endif	
-
-//
-// Specify additional languages for the UI. Default specified by LCD_LANGUAGE.
-//
-#if EITHER(DOGLCD, TOUCH_UI_FTDI_EVE)
-  //#define LCD_LANGUAGE_2 fr
-  //#define LCD_LANGUAGE_3 de
-  //#define LCD_LANGUAGE_4 es
-  //#define LCD_LANGUAGE_5 it
-  #ifdef LCD_LANGUAGE_2
-    //#define LCD_LANGUAGE_AUTO_SAVE // Automatically save language to EEPROM on change
-  #endif
-#endif
-
+	
 //
 // Touch UI for the FTDI Embedded Video Engine (EVE)
 //
@@ -2076,7 +2063,7 @@
  *
  * Note that M207 / M208 / M209 settings are saved to EEPROM.
  */
-	//#define FWRETRACT
+//#define FWRETRACT
 #if ENABLED(FWRETRACT)
   #define FWRETRACT_AUTORETRACT             // Override slicer retractions
   #if ENABLED(FWRETRACT_AUTORETRACT)
@@ -3372,7 +3359,7 @@
   //#define USER_SCRIPT_AUDIBLE_FEEDBACK
   //#define USER_SCRIPT_RETURN  // Return to status screen after a script
 
-  #define USER_CMD_1_ENABLE
+  #define USER_CMD_1_ENABLE	
   #define USER_DESC_1 "Home & UBL Info"
   #define USER_GCODE_1 "G28;\nG29 W;"
 
