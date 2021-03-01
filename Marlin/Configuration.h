@@ -993,7 +993,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -29.87, 4.159, -0.65} // inductiu
+#define NOZZLE_TO_PROBE_OFFSET { -29.87, 4.159, -0.1730} // inductiu
 //#define NOZZLE_TO_PROBE_OFFSET { -58.5316, 5.85755, -2.304} // BL Touch
 
 // Most probes should stay away from the edges of the bed, but
