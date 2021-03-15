@@ -498,9 +498,9 @@
     #define DEFAULT_Kd_LIST { 76.71, 76.71 }
   #else
     // Sapphire Pro
-    #define DEFAULT_Kp 26.42
-    #define DEFAULT_Ki 2.28
-    #define DEFAULT_Kd 76.62
+    #define DEFAULT_Kp 21.69
+    #define DEFAULT_Ki 1.83
+    #define DEFAULT_Kd 64.41
   #endif
 #endif // PIDTEMP
 
@@ -540,9 +540,9 @@
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   // Sapphire Pro
-  #define DEFAULT_bedKp 90.69
-  #define DEFAULT_bedKi 17.99
-  #define DEFAULT_bedKd 307.71
+  #define DEFAULT_bedKp 75.84
+  #define DEFAULT_bedKi 15.05
+  #define DEFAULT_bedKd 254.81
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -744,7 +744,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.488, 159.802, 800, 428.299 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.488, 159.802, 1600, 428.299 }
 
 /**
  * Default Max Feed Rate (mm/s)
