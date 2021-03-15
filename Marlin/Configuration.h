@@ -497,10 +497,10 @@
     #define DEFAULT_Ki_LIST {   1.99,   1.99 }
     #define DEFAULT_Kd_LIST { 76.71, 76.71 }
   #else
-  // Sapphire Pro
-  #define DEFAULT_Kp 10.36
-  #define DEFAULT_Ki 0.51
-  #define DEFAULT_Kd 52.94
+    // Sapphire Pro
+    #define DEFAULT_Kp 26.42
+    #define DEFAULT_Ki 2.28
+    #define DEFAULT_Kd 76.62
   #endif
 #endif // PIDTEMP
 
@@ -540,9 +540,9 @@
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   // Sapphire Pro
-  #define DEFAULT_bedKp 36.04
-  #define DEFAULT_bedKi 7.02
-  #define DEFAULT_bedKd 123.30
+  #define DEFAULT_bedKp 90.69
+  #define DEFAULT_bedKi 17.99
+  #define DEFAULT_bedKd 307.71
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -2446,6 +2446,7 @@
    */
   //#define FRENCH_KEYBOARD
 #endif
+
 //#define TFT_LVGL_UI_FSMC  // Robin nano v1.2 uses FSMC
 //#define TFT_LVGL_UI_SPI   // Robin nano v2.0 uses SPI
 
