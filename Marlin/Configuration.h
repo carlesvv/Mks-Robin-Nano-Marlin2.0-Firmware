@@ -801,11 +801,11 @@
 
   #define LIMITED_JERK_EDITING        // Limit edit via M205 or LCD to DEFAULT_aJERK * 2
   #if ENABLED(LIMITED_JERK_EDITING)
-    #define MAX_JERK_EDIT_VALUES { 20, 20, 0.6, 10 } // ...or, set your own edit limits
+    #define MAX_JERK_EDIT_VALUES { 12, 12, 0.6, 12 } // ...or, set your own edit limits
   #endif
 #endif
 
-#define DEFAULT_EJERK    6  // May be used by Linear Advance
+#define DEFAULT_EJERK    4  // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
@@ -994,7 +994,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { +27.13689, -32.9814, -0.940 }
+#define NOZZLE_TO_PROBE_OFFSET { +27.13689, -32.9814, -1.180 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1485,7 +1485,7 @@
  * Commands to execute at the end of G29 probing.
  * Useful to retract or move the Z probe out of the way.
  */
-#define Z_PROBE_END_SCRIPT "G91;\n1G1 Z10 F12000;\nG90;\nG1 X5 F3600;\nG1 Y175 F3600;\nM500;"	
+#define Z_PROBE_END_SCRIPT "G91;\n1G1 Z10 F12000;\nG90;\nG1 X0 F3600;\nG1 Y0 F3600;\nM500;"	
 
 // @section homing
 
