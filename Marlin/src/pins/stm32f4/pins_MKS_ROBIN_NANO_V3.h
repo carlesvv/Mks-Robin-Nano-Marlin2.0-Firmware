@@ -31,6 +31,10 @@
 
 #define BOARD_INFO_NAME "MKS Robin Nano V3"
 
+// Use soft PWM for fans - PWM is not working properly when paired with STM32 Arduino Core v1.7.0
+// This can be removed when Core version is updated and PWM behaviour is fixed.
+#define FAN_SOFT_PWM
+
 // USB Flash Drive support
 #define HAS_OTG_USB_HOST_SUPPORT
 
@@ -166,8 +170,8 @@
 #define HEATER_1_PIN                        PB0   // HEATER2
 #define HEATER_BED_PIN                      PA0   // HOT BED
 
-#define FAN_PIN                             PB1   // FAN
-#define FAN1_PIN                            PC14  // FAN1
+#define FAN_PIN                             PC14  // FAN0
+#define FAN1_PIN                            PB1   // FAN1
 
 //
 // Thermocouples

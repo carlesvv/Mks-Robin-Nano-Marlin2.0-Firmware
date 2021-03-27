@@ -292,6 +292,9 @@ lv_style_t lv_bar_style_indic;
 lv_style_t style_btn_pr;
 lv_style_t style_btn_rel;
 
+lv_style_t style_check_box_selected;
+lv_style_t style_check_box_unselected;
+
 void tft_style_init() {
   lv_style_copy(&tft_style_scr, &lv_style_scr);
   tft_style_scr.body.main_color   = LV_COLOR_BACKGROUND;
@@ -434,6 +437,24 @@ void tft_style_init() {
   lv_bar_style_indic.body.main_color   = lv_color_hex3(0xADF);
   lv_bar_style_indic.body.grad_color   = lv_color_hex3(0xADF);
   lv_bar_style_indic.body.border.color = lv_color_hex3(0xADF);
+
+  lv_style_copy(&style_check_box_selected, &lv_style_btn_pr);
+	style_check_box_selected.body.main_color   = LV_COLOR_YELLOW;
+	style_check_box_selected.body.grad_color   = LV_COLOR_YELLOW;
+	style_check_box_selected.text.color        = LV_COLOR_TEXT;
+	style_check_box_selected.text.sel_color    = LV_COLOR_TEXT;
+	style_check_box_selected.line.width        = 0;
+	style_check_box_selected.text.letter_space = 0;
+	style_check_box_selected.text.line_space   = 0;
+
+	lv_style_copy(&style_check_box_unselected, &lv_style_btn_pr);
+	style_check_box_unselected.body.main_color   = LV_COLOR_WHITE;
+	style_check_box_unselected.body.grad_color   = LV_COLOR_WHITE;
+	style_check_box_unselected.text.color        = LV_COLOR_TEXT;
+	style_check_box_unselected.text.sel_color    = LV_COLOR_TEXT;
+	style_check_box_unselected.line.width        = 0;
+	style_check_box_unselected.text.letter_space = 0;
+	style_check_box_unselected.text.line_space   = 0;
 }
 
 #define MAX_TITLE_LEN 28
@@ -595,7 +616,7 @@ char *creat_title_text() {
   if (strlen(public_buf_m) > MAX_TITLE_LEN) {
     ZERO(public_buf_m);
     tmpText = 0;
-    for (index = 0; index <= disp_state_stack._disp_index && (!tmpText || *tmpText == 0); index++) 
+    for (index = 0; index <= disp_state_stack._disp_index && (!tmpText || *tmpText == 0); index++)
       tmpText = getDispText(index);
     if (*tmpText != 0) {
       titleText_cat(public_buf_m, sizeof(public_buf_m), tmpText);
@@ -812,8 +833,11 @@ void GUI_RefreshPage() {
       }
       break;
     case PRINT_READY_UI:
+      if (temps_update_flag) {
+        temps_update_flag = false;
+        lv_temp_refr();
+      }
       break;
-
     case PRINT_FILE_UI: break;
 
     case PRINTING_UI:
@@ -963,8 +987,7 @@ void lv_clear_cur_ui() {
   last_disp_state = disp_state_stack._disp_state[disp_state_stack._disp_index];
 
   switch (disp_state_stack._disp_state[disp_state_stack._disp_index]) {
-    case PRINT_READY_UI:              
-                                      lv_clear_ready_print(); break;
+    case PRINT_READY_UI:              lv_clear_ready_print(); break;
     case PRINT_FILE_UI:               lv_clear_print_file(); break;
     case PRINTING_UI:                 lv_clear_printing(); break;
     case MOVE_MOTOR_UI:               lv_clear_move_motor(); break;
@@ -1059,6 +1082,10 @@ void lv_clear_cur_ui() {
     #endif
     #if ENABLED(TOUCH_SCREEN_CALIBRATION)
       case TOUCH_CALIBRATION_UI:      lv_clear_touch_calibration_screen(); break;
+    #endif
+    #if ENABLED(DUAL_X_CARRIAGE)
+      case DUAL_X_CARRIAGE_MODE_UI:   lv_clear_dual_x_carriage_mode(); break;
+      case HOTEND_OFFSET_UI:          lv_clear_hotend_offset_settings(); break;
     #endif
     default: break;
   }
@@ -1165,6 +1192,10 @@ void lv_draw_return_ui() {
         case ENCODER_SETTINGS_UI:       lv_draw_encoder_settings(); break;
       #endif
       case TOUCHMI_UI:                  lv_draw_touchmi_settings(); break;
+      #if ENABLED(DUAL_X_CARRIAGE)
+        case DUAL_X_CARRIAGE_MODE_UI:   lv_draw_dual_x_carriage_mode(); break;
+        case HOTEND_OFFSET_UI:          lv_draw_hotend_offset_settings(); break;
+      #endif
       default: break;
     }
   }

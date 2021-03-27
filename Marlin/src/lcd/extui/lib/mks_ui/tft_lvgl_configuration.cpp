@@ -130,6 +130,10 @@ void tft_lvgl_init() {
     OUT_WRITE(PB0, LOW);  // HE1
   #endif
 
+  #if PIN_EXISTS(USB_POWER_CONTROL)
+    OUT_WRITE(USB_POWER_CONTROL_PIN, HIGH);
+  #endif
+
   // Init TFT first!
   SPI_TFT.spi_init(SPI_FULL_SPEED);
   SPI_TFT.LCD_init();
