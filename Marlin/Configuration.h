@@ -804,7 +804,7 @@
   #endif
 #endif
 
-#define DEFAULT_EJERK    8  // May be used by Linear Advance
+#define DEFAULT_EJERK    4  // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
@@ -1098,10 +1098,10 @@
 //#define DELAY_BEFORE_PROBING 200  // (ms) To prevent vibrations from triggering piezo sensors
 
 // Require minimum nozzle and/or bed temperature for probing.
-//#define PREHEAT_BEFORE_PROBING
+#define PREHEAT_BEFORE_PROBING
 #if ENABLED(PREHEAT_BEFORE_PROBING)
-  #define PROBING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
-  #define PROBING_BED_TEMP     50
+  #define PROBING_NOZZLE_TEMP 160   // (°C) Only applies to E0 at this time
+  #define PROBING_BED_TEMP     65
 #endif
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
@@ -1485,7 +1485,7 @@
  * Commands to execute at the end of G29 probing.
  * Useful to retract or move the Z probe out of the way.
  */
-#define Z_PROBE_END_SCRIPT "G91;\n1G1 Z10 F12000;\nG90;\nG1 X5 F3600;\nG1 Y338 F3600;\nM500;"	
+#define Z_PROBE_END_SCRIPT "G91;\n1G1 Z10 F1000;\nG90;\nG1 X5 F3600;\nG1 Y338 F3600;\nM500;"	
 
 // @section homing
 
@@ -2446,6 +2446,7 @@
    */
   //#define FRENCH_KEYBOARD
 #endif
+
 //#define TFT_LVGL_UI_FSMC  // Robin nano v1.2 uses FSMC
 //#define TFT_LVGL_UI_SPI   // Robin nano v2.0 uses SPI
 
@@ -2484,6 +2485,10 @@
   //#define TOUCH_OFFSET_Y        257
   //#define TOUCH_ORIENTATION TOUCH_LANDSCAPE
 
+  #if BOTH(TOUCH_SCREEN_CALIBRATION, EEPROM_SETTINGS)
+    #define TOUCH_CALIBRATION_AUTO_SAVE // Auto save successful calibration values to EEPROM
+  #endif
+  
   #if ENABLED(TFT_COLOR_UI)
     #define SINGLE_TOUCH_NAVIGATION
   #endif
