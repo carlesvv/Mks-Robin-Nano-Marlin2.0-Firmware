@@ -410,7 +410,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 5
+#define TEMP_SENSOR_0 1
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -804,7 +804,7 @@
   #endif
 #endif
 
-#define DEFAULT_EJERK    4  // May be used by Linear Advance
+#define DEFAULT_EJERK    8  // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
