@@ -791,10 +791,10 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
-//#define CLASSIC_JERK
+#define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK 10.0
-  #define DEFAULT_YJERK 10.0
+  #define DEFAULT_XJERK 8.0
+  #define DEFAULT_YJERK 8.0
   #define DEFAULT_ZJERK  0.3
 
   //#define TRAVEL_EXTRA_XYJERK 0.0     // Additional jerk allowance for all travel moves
@@ -805,7 +805,7 @@
   #endif
 #endif
 
-#define DEFAULT_EJERK    4  // May be used by Linear Advance
+#define DEFAULT_EJERK    8  // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
