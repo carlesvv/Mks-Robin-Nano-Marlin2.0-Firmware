@@ -498,9 +498,9 @@
     #define DEFAULT_Kd_LIST { 56.60, 56.60 }
   #else
     // Creality Ender-5 Plus
-    #define DEFAULT_Kp 15.96
-    #define DEFAULT_Ki 1.12
-    #define DEFAULT_Kd 56.60
+    #define DEFAULT_Kp 30.31
+    #define DEFAULT_Ki 4.20
+    #define DEFAULT_Kd 54.69
   #endif
 #endif // PIDTEMP
 
@@ -993,7 +993,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -29.87, 4.159, -01.730} // inductiu
+#define NOZZLE_TO_PROBE_OFFSET { -29.87, 4.159, -01.065} // inductiu
 //#define NOZZLE_TO_PROBE_OFFSET { -58.5316, 5.85755, -2.304} // BL Touch
 
 // Most probes should stay away from the edges of the bed, but
