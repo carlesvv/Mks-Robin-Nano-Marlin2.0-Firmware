@@ -2572,8 +2572,8 @@
    * Define your own with:
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  //#define CHOPPER_TIMING CHOPPER_DEFAULT_12V        // All axes (override below)
-  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V        // All axes (override below)
+  //#define CHOPPER_TIMING CHOPPER_DEFAULT_24V
   //#define CHOPPER_TIMING_X  CHOPPER_DEFAULT_12V   // For X Axes (override below)
   //#define CHOPPER_TIMING_X2 CHOPPER_DEFAULT_12V
   //#define CHOPPER_TIMING_Y  CHOPPER_DEFAULT_12V   // For Y Axes (override below)
@@ -3373,12 +3373,17 @@
   #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_3_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_3_TEMP_HOTEND)
 
   #define USER_CMD_4_ENABLE
-  #define USER_DESC_4 "Aparcar"
-  #define USER_GCODE_4 "G28 X;\nG28 Y;\nG91;\nG1 Z10;\nG90;\nG1 X0 Y195;"
-
+  #define USER_DESC_4 "Refredar"
+  #define USER_GCODE_4 "M104 S0;\nM140 S0;"
+  
   #define USER_CMD_5_ENABLE
-  #define USER_DESC_5 "Resetejar"
-  #define USER_GCODE_5 "M502;\nM500;\nM501;"
+  #define USER_DESC_5 "Aparcar"
+  #define USER_GCODE_5 "G28 X;\nG28 Y;\nG91;\nG1 Z10;\nG90;\nG1 X0 Y195;"
+
+  #define USER_CMD_6_ENABLE
+  #define USER_DESC_6 "Resetejar"
+  #define USER_GCODE_6 "M502;\nM500;\nM501;"
+
 #endif
 
 /**
