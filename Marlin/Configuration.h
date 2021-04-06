@@ -128,9 +128,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  //#define MOTHERBOARD BOARD_MKS_ROBIN_NANO
-  //#define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V2
-  #define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V3
+  #define MOTHERBOARD BOARD_MKS_ROBIN_E3P
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
@@ -864,7 +862,7 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-#define Z_MIN_PROBE_PIN PA8 // Pin 32 is the RAMPS default
+#define Z_MIN_PROBE_PIN PC4 // Pin 32 is the RAMPS default PA8
 
 /**
  * Probe Type
