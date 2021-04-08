@@ -2337,7 +2337,7 @@
  */
 #if HAS_TRINAMIC_CONFIG
 
-  #define HOLD_MULTIPLIER    0.5  // Scales down the holding current from run current
+  #define HOLD_MULTIPLIER    0.8  // Scales down the holding current from run current
 
   /**
    * Interpolate microsteps to 256
@@ -2619,10 +2619,10 @@
    */
   #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     150  // [mm/s]
-  #define X2_HYBRID_THRESHOLD    150
-  #define Y_HYBRID_THRESHOLD     150
-  #define Y2_HYBRID_THRESHOLD    150
+  #define X_HYBRID_THRESHOLD     120  // [mm/s]
+  #define X2_HYBRID_THRESHOLD    120
+  #define Y_HYBRID_THRESHOLD     120
+  #define Y2_HYBRID_THRESHOLD    120
   #define Z_HYBRID_THRESHOLD       0
   #define Z2_HYBRID_THRESHOLD      0
   #define Z3_HYBRID_THRESHOLD      0
@@ -3373,12 +3373,16 @@
   #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_3_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_3_TEMP_HOTEND)
 
   #define USER_CMD_4_ENABLE
-  #define USER_DESC_4 "Aparcar"
-  #define USER_GCODE_4 "G28 X;\nG28 Y;\nG91;\nG1 Z10;\nG90;\nG1 X0 Y195;"
+  #define USER_DESC_4 "Refredar"
+  #define USER_GCODE_4 "M104 S0;\nM140 S0;"
 
   #define USER_CMD_5_ENABLE
-  #define USER_DESC_5 "Resetejar"
-  #define USER_GCODE_5 "M502;\nM500;\nM501;"
+  #define USER_DESC_5 "Aparcar"
+  #define USER_GCODE_5 "G28 X;\nG28 Y;\nG91;\nG1 Z10;\nG90;\nG1 X0 Y195;"
+
+  #define USER_CMD_6_ENABLE
+  #define USER_DESC_6 "Resetejar"
+  #define USER_GCODE_6 "M502;\nM500;\nM501;"
 #endif
 
 /**
