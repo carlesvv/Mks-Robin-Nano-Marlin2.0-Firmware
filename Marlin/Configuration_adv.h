@@ -3374,7 +3374,7 @@
 
   #define USER_CMD_4_ENABLE
   #define USER_DESC_4 "Refredar"
-  #define USER_GCODE_4 "M104 S0\nM140 S0"
+  #define USER_GCODE_4 "M104 S0;\nM140 S0;"
 
   #define USER_CMD_5_ENABLE
   #define USER_DESC_5 "Aparcar"
