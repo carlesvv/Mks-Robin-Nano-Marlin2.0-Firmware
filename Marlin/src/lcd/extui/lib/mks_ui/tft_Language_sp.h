@@ -25,6 +25,7 @@
 #define TOOL_TEXT_SP            "Ajustes"
 #define PREHEAT_TEXT_SP         "Precalentar"
 #define MOVE_TEXT_SP            "Mover"
+#define TEXT_ZOFFSET_SP         "Z offset"
 #define HOME_TEXT_SP            "Origen"
 #define PRINT_TEXT_SP           "Imprimir"
 #define EXTRUDE_TEXT_SP         "Extrusor"
@@ -238,6 +239,7 @@
 #define DIALOG_REPRINT_SP             "Print again"
 #define DIALOG_WIFI_ENABLE_TIPS_SP    "The wifi module is being configured,\nplease wait a moment....."
 #define DIALOG_PAUSING_TIPS_SP        "La máquina se detiene ..."
+#define DIALOG_AUTO_LEVELING_TIPS_SP  "Nivelación automática, espere ..."
 
 #define PRINTING_SP               "Imprimiendo"
 #define PRINTING_AJUSTES_SP       "Ajustes"

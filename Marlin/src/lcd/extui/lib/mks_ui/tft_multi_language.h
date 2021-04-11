@@ -106,6 +106,20 @@ typedef struct machine_common_disp{
   const char *LevelingManuPosConf;
   const char *LevelingAutoCommandConf;
   const char *LevelingAutoZoffsetConf;
+  const char *LevelingTouchmiConf;
+  const char *TouchmiInit;
+  const char *TouchmiOffsetpos;
+  const char *TouchmiOffsetneg;
+  const char *TouchmiSave;
+  const char *TouchmiTest;
+
+  const char *BLTouchLevelingConfTitle;
+  const char *BLTouchLevelingConf;
+  const char *BLTouchInit;
+  const char *BLTouchOffsetpos;
+  const char *BLTouchOffsetneg;
+  const char *BLTouchSave;
+  const char *BLTouchTest;
 
   const char *LevelingSubConfTitle;
   const char *AutoLevelEnable;
@@ -236,7 +250,9 @@ typedef struct machine_common_disp{
   const char *PausePosition;
   const char *WifiSettings;
   const char *EncoderSettings;
-
+  const char *xModeSettings;
+  const char *hotendOffsetSettings;
+  
   const char *Z2ConfTitle;
   const char *Z2Enable;
   const char *Z2EndstopEnable;
@@ -287,6 +303,17 @@ typedef struct machine_common_disp{
 
   const char *EncoderConfTitle;
   const char *EncoderConfText;
+
+  const char *XmodeConfigTitle;
+  const char *fullControl;
+  const char *autoPark;
+  const char *duplication;
+  const char *mirror;
+
+  const char *hotendOffsetConfigTitle;
+  const char *hotendXoffset;
+  const char *hotendYoffset;
+  const char *hotendZoffset;
 
 } machine_common_def;
 
@@ -359,6 +386,7 @@ typedef struct move_menu_disp {
   const char *step_01mm;
   const char *step_1mm;
   const char *step_10mm;
+  const char *zoffset;
   const char *back;
 } move_menu_def;
 
@@ -375,6 +403,17 @@ typedef struct home_menu_disp {
 } home_menu_def;
 
 extern home_menu_def home_menu;
+
+typedef struct touchmi_menu_disp {
+  const char *title;
+  const char *init;
+  const char *zoffsetpos;
+  const char *zoffsetneg;
+  const char *test;
+  const char *save;
+} touchmi_menu_def;
+
+extern touchmi_menu_def touchmi_menu;
 
 typedef struct file_menu_disp {
   const char *title;
@@ -686,6 +725,7 @@ typedef struct print_file_dialog_disp {
   const char *reprint;
   const char *wifi_enable_tips;
   const char *machinePausingTips;
+  const char *autolevelingTips;
 } print_file_dialog_menu_def;
 
 extern print_file_dialog_menu_def print_file_dialog_menu;
@@ -771,6 +811,7 @@ extern eeprom_def eeprom_menu;
 #define TEXT_01MM           "0.1 mm"
 #define TEXT_1MM            "1 mm"
 #define TEXT_10MM           "10 mm"
+#define TEXT_ZOFFSET        "Z offset"
 
 #define EXTRUDE_1MM_TEXT    "1 mm"
 #define EXTRUDE_5MM_TEXT    "5 mm"
@@ -798,6 +839,13 @@ extern eeprom_def eeprom_menu;
 #define HOME_Z_TEXT         "Z"
 #define HOME_ALL_TEXT       "All"
 
+#define TM_INIT             "Init"
+#define TM_ZOFFSETPOS       "Offset +"
+#define TM_ZOFFSETNEG       "Offset -"
+#define TM_SAVE             "Save"
+#define TM_TEST             "Test"
+
+//#if defined(MKS_ROBIN_NANO)
 #define ABOUT_TYPE_TEXT     "MKS Robin Pro"
 
 #define ABOUT_VERSION_TEXT  "1.0.0"

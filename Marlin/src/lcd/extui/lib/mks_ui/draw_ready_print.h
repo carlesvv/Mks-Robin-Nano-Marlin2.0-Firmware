@@ -31,7 +31,13 @@ extern void disp_Limit_ok();
 extern void disp_Limit_error();
 extern void disp_det_error();
 extern void disp_det_ok();
+extern void disp_tmc_ok();
+extern void disp_tmc_error();
 extern void lv_clear_ready_print();
+extern void disp_ext_temp();
+extern void disp_bed_temp();
+extern void lv_temp_info();
+extern void lv_temp_refr();
 
 #ifdef __cplusplus
   } /* C-declarations for C++ */

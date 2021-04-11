@@ -242,11 +242,11 @@ static void disp_key_value() {
         break;
       case y_offset:
         #if HAS_PROBE_XY_OFFSET
-        sprintf_P(public_buf_m, PSTR("%s"), dtostrf(probe.offset.x, 1, 3, str_1));
+        sprintf_P(public_buf_m, PSTR("%s"), dtostrf(probe.offset.y, 1, 3, str_1));
         #endif
         break;
       case z_offset:
-        sprintf_P(public_buf_m, PSTR("%s"), dtostrf(probe.offset.x, 1, 3, str_1));
+        sprintf_P(public_buf_m, PSTR("%s"), dtostrf(probe.offset.z, 1, 3, str_1));
         break;
     #endif
     case load_length:
@@ -284,6 +284,17 @@ static void disp_key_value() {
         sprintf_P(public_buf_m, PSTR("%d"), TERN(Z2_SENSORLESS, stepperZ2.homing_threshold(), 0));
       #endif
       break;
+    #if ENABLED(DUAL_X_CARRIAGE)
+      case x_hotend_offset:
+        sprintf_P(public_buf_m, PSTR("%s"), dtostrf(hotend_offset[1].x, 1, 1, str_1));
+        break;
+      case y_hotend_offset:
+        sprintf_P(public_buf_m, PSTR("%s"), dtostrf(hotend_offset[1].y, 1, 1, str_1));
+        break;
+      case z_hotend_offset:
+        sprintf_P(public_buf_m, PSTR("%s"), dtostrf(hotend_offset[1].z, 1, 1, str_1));
+        break;
+    #endif
   }
 
   strcpy(key_value, public_buf_m);
@@ -529,7 +540,19 @@ static void set_value_confirm() {
         stepperZ2.homing_threshold(atoi(key_value));
       #endif
       break;
+    #if ENABLED(DUAL_X_CARRIAGE)
+      case x_hotend_offset:
+        hotend_offset[1].x = atof(key_value);
+        break;
+      case y_hotend_offset:
+        hotend_offset[1].y = atof(key_value);
+        break;
+      case z_hotend_offset:
+        hotend_offset[1].z = atof(key_value);
+        break;
+    #endif
   }
+  watchdog_refresh();
   gcode.process_subcommands_now_P(PSTR("M500"));
 }
 
@@ -713,6 +736,16 @@ void lv_draw_number_key(void) {
   lv_label_set_text(labelKey_0, machine_menu.key_0);
   lv_obj_align(labelKey_0, NumberKey_0, LV_ALIGN_CENTER, 0, 0);
 
+  lv_obj_t *Minus = lv_btn_create(scr, 168, 240, 68, 40, event_handler, ID_NUM_NEGATIVE, &style_num_key_pre);
+  lv_obj_t *labelMinus = lv_label_create_empty(Minus);
+  lv_label_set_text(labelMinus, machine_menu.negative);
+  lv_obj_align(labelMinus, Minus, LV_ALIGN_CENTER, 0, 0);
+
+  lv_obj_t *KeyPoint = lv_btn_create(scr, 244, 240, 68, 40, event_handler, ID_NUM_POINT, &style_num_key_pre);
+  lv_obj_t *labelKeyPoint = lv_label_create_empty(KeyPoint);
+  lv_label_set_text(labelKeyPoint, machine_menu.key_point);
+  lv_obj_align(labelKeyPoint, KeyPoint, LV_ALIGN_CENTER, 0, 0);
+
   lv_obj_t *KeyBack = lv_btn_create(scr, 320, 90, 68, 40, event_handler, ID_NUM_BACK, &style_num_key_pre);
   lv_obj_t *labelKeyBack = lv_label_create_empty(KeyBack);
   lv_label_set_text(labelKeyBack, machine_menu.key_back);
@@ -727,16 +760,6 @@ void lv_draw_number_key(void) {
   lv_obj_t *labelKeyConfirm = lv_label_create_empty(KeyConfirm);
   lv_label_set_text(labelKeyConfirm, machine_menu.key_confirm);
   lv_obj_align(labelKeyConfirm, KeyConfirm, LV_ALIGN_CENTER, 0, 0);
-
-  lv_obj_t *KeyPoint = lv_btn_create(scr, 244, 240, 68, 40, event_handler, ID_NUM_POINT, &style_num_key_pre);
-  lv_obj_t *labelKeyPoint = lv_label_create_empty(KeyPoint);
-  lv_label_set_text(labelKeyPoint, machine_menu.key_point);
-  lv_obj_align(labelKeyPoint, KeyPoint, LV_ALIGN_CENTER, 0, 0);
-
-  lv_obj_t *Minus = lv_btn_create(scr, 168, 240, 68, 40, event_handler, ID_NUM_NEGATIVE, &style_num_key_pre);
-  lv_obj_t *labelMinus = lv_label_create_empty(Minus);
-  lv_label_set_text(labelMinus, machine_menu.negative);
-  lv_obj_align(labelMinus, Minus, LV_ALIGN_CENTER, 0, 0);
 
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) {

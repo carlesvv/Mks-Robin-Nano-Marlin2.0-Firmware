@@ -130,10 +130,26 @@ void tft_lvgl_init() {
     OUT_WRITE(PB0, LOW);  // HE1
   #endif
 
+  #if PIN_EXISTS(USB_POWER_CONTROL)
+    OUT_WRITE(USB_POWER_CONTROL_PIN, HIGH);
+  #endif
+
   // Init TFT first!
   SPI_TFT.spi_init(SPI_FULL_SPEED);
   SPI_TFT.LCD_init();
 
+  #if ENABLED(USB_FLASH_DRIVE_SUPPORT)
+    uint16_t usb_flash_loop = 1000;
+    do {
+      Sd2Card::idle();
+      watchdog_refresh();
+      delay(2);
+    } while((!Sd2Card::isInserted()) && (usb_flash_loop--));
+    card.mount();
+  #elif HAS_LOGO_IN_FLASH
+    delay(2000);
+  #endif
+  
   watchdog_refresh();     // LVGL init takes time
 
   #if ENABLED(SDSUPPORT)
@@ -224,9 +240,13 @@ void tft_lvgl_init() {
 
       uiCfg.print_state = REPRINTING;
 
-      strncpy(public_buf_m, recovery.info.sd_filename, sizeof(public_buf_m));
-      card.printLongPath(public_buf_m);
-      strncpy(list_file.long_name[sel_id], card.longFilename, sizeof(list_file.long_name[sel_id]));
+      #if ENABLED(LONG_FILENAME_HOST_SUPPORT)
+        strncpy(public_buf_m, recovery.info.sd_filename, sizeof(public_buf_m));
+        card.printLongPath(public_buf_m);
+        strncpy(list_file.long_name[sel_id], card.longFilename, sizeof(list_file.long_name[sel_id]));
+      #else
+        strncpy(list_file.long_name[sel_id], recovery.info.sd_filename, sizeof(list_file.long_name[sel_id]));
+      #endif
       lv_draw_printing();
     }
   #endif
@@ -317,8 +337,13 @@ bool my_touchpad_read(lv_indev_drv_t * indev_driver, lv_indev_data_t * data) {
       data->state = LV_INDEV_STATE_PR;
 
       // Set the coordinates (if released use the last-pressed coordinates)
-      data->point.x = last_x;
-      data->point.y = last_y;
+      #if TFT_ROTATION == TFT_ROTATE_180
+        data->point.x = TFT_WIDTH - last_x;
+        data->point.y = TFT_HEIGHT -last_y;
+      #else
+        data->point.x = last_x;
+        data->point.y = last_y;
+      #endif
 
       last_x = last_y = 0;
       last_touch_state = LV_INDEV_STATE_PR;
