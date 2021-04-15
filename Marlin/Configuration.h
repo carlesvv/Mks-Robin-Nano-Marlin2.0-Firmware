@@ -537,10 +537,14 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
+  
   // CR-10
-  #define DEFAULT_bedKp 75.84
-  #define DEFAULT_bedKi 15.05
-  #define DEFAULT_bedKd 254.81
+  // #define DEFAULT_bedKp 75.84
+  // #define DEFAULT_bedKi 15.05
+  // #define DEFAULT_bedKd 254.81
+  #define DEFAULT_bedKp 277.42
+  #define DEFAULT_bedKi 54.07
+  #define DEFAULT_bedKd 948.95
   
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
@@ -743,7 +747,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 1600, 830 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.32, 160.48, 1600, 821.78 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -993,7 +997,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -55, -13, -3.1 }
+#define NOZZLE_TO_PROBE_OFFSET { -55, -13, -3.240 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1332,8 +1336,8 @@
  */
 //#define PREHEAT_BEFORE_LEVELING
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
-  #define LEVELING_NOZZLE_TEMP 150   // (°C) Only applies to E0 at this time
-  #define LEVELING_BED_TEMP     60
+  #define LEVELING_NOZZLE_TEMP 160   // (°C) Only applies to E0 at this time
+  #define LEVELING_BED_TEMP     65
 #endif
 
 /**
