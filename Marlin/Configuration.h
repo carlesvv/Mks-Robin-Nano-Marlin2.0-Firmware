@@ -539,9 +539,6 @@
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   
   // CR-10
-  // #define DEFAULT_bedKp 75.84
-  // #define DEFAULT_bedKi 15.05
-  // #define DEFAULT_bedKd 254.81
   #define DEFAULT_bedKp 277.42
   #define DEFAULT_bedKi 54.07
   #define DEFAULT_bedKd 948.95
@@ -1007,7 +1004,7 @@
 #define XY_PROBE_SPEED (50*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-#define Z_PROBE_SPEED_FAST (5*60)
+#define Z_PROBE_SPEED_FAST (4*60)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
 #define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
@@ -1138,7 +1135,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
+#define INVERT_E0_DIR true
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -1176,7 +1173,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 375
+#define Z_MAX_POS 340
 
 /**
  * Software Endstops
@@ -1488,7 +1485,7 @@
  * Commands to execute at the end of G29 probing.
  * Useful to retract or move the Z probe out of the way.
  */
-#define Z_PROBE_END_SCRIPT "G91;\n1G1 Z10 F1200;\nG90;\nG1 Z3 F1200;\nG1 X0 F3600;\nG1 Y0 F3600;\nM500;"	
+#define Z_PROBE_END_SCRIPT "G91;\nG1 Z10 F1200;\nG90;\nG1 Z3 F1200;\nG1 X0 F3600;\nG1 Y0 F3600;\nM500;"	
 
 // @section homing
 
@@ -1518,7 +1515,7 @@
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
+#define HOMING_FEEDRATE_MM_M { (30*60), (30*60), (4*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -1600,7 +1597,7 @@
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
 //#define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
-  //#define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
+  #define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
 #endif
 
 //
@@ -1628,17 +1625,17 @@
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
 #define PREHEAT_1_TEMP_HOTEND 160
-#define PREHEAT_1_TEMP_BED     60
+#define PREHEAT_1_TEMP_BED     0
 #define PREHEAT_1_FAN_SPEED     64 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    100
+#define PREHEAT_2_TEMP_HOTEND 220
+#define PREHEAT_2_TEMP_BED    80
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_3_LABEL       "PETG"
-#define PREHEAT_3_TEMP_HOTEND 185
-#define PREHEAT_3_TEMP_BED    65
+#define PREHEAT_3_TEMP_HOTEND 180
+#define PREHEAT_3_TEMP_BED    70
 #define PREHEAT_3_FAN_SPEED     64 // Value from 0 to 255
 
 /**
@@ -2440,14 +2437,17 @@
 
 #if ENABLED(TFT_LVGL_UI)
   #define MKS_WIFI_MODULE  // MKS WiFi module
+ 
   /**
-   * FRENCH KEYBOARD
+   * KEYBOARD LAYOUT
    * 
-   * Select the french keyboard layoud in MKS_UI
-   *  if defined  azerty layout
-   *  if npt      qwerty layout
+   * Select alternativ keyboard layout in MKS_UI
+   *  FRENCH_KEYBOARD - azerty layout
+   *  GERMAN_KEYBOARD - qwertz layout
+   *  if not defined - use qwerty layout
    */
   //#define FRENCH_KEYBOARD
+  //#define GERMAN_KEYBOARD
 #endif
 
 //#define TFT_LVGL_UI_FSMC  // Robin nano v1.2 uses FSMC
@@ -2486,8 +2486,7 @@
   // #define TOUCH_CALIBRATION_Y 11586
   // #define TOUCH_OFFSET_X        500
   // #define TOUCH_OFFSET_Y        9
-  #define TOUCH_ORIENTATION TOUCH_LANDSCAPE
-
+  // #define TOUCH_ORIENTATION TOUCH_LANDSCAPE
 
   #if BOTH(TOUCH_SCREEN_CALIBRATION, EEPROM_SETTINGS)
     #define TOUCH_CALIBRATION_AUTO_SAVE // Auto save successful calibration values to EEPROM
