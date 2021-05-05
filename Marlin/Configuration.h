@@ -754,7 +754,7 @@
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 300, 300, 8, 30 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 300, 300, 10, 50 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -763,11 +763,11 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 600, 600, 100, 600 }
+#define DEFAULT_MAX_ACCELERATION      { 250, 250, 100, 250 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-  #define MAX_ACCEL_EDIT_VALUES       { 600, 600, 100, 600 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 250, 250, 100, 250 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -778,7 +778,7 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_ACCELERATION          250    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  500    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   500    // X, Y, Z acceleration for travel (non printing) moves
 
@@ -1624,17 +1624,17 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 150
+#define PREHEAT_1_TEMP_HOTEND 160
 #define PREHEAT_1_TEMP_BED     65
 #define PREHEAT_1_FAN_SPEED     64 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    100
+#define PREHEAT_2_TEMP_HOTEND 220
+#define PREHEAT_2_TEMP_BED    80
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_3_LABEL       "PETG"
-#define PREHEAT_3_TEMP_HOTEND 185
+#define PREHEAT_3_TEMP_HOTEND 180
 #define PREHEAT_3_TEMP_BED    75
 #define PREHEAT_3_FAN_SPEED     64 // Value from 0 to 255
 
