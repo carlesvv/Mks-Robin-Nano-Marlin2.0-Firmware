@@ -807,7 +807,7 @@
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probe points.
-  #define TRAMMING_POINT_XY { {  20, 20 }, { 290,  20 }, { 290, 290 }, { 20, 290 } }
+  #define TRAMMING_POINT_XY { {  20, 20 }, { 295,  20 }, { 297, 250 }, { 20, 250 } }
 
   // Define position names for probe points.
   #define TRAMMING_POINT_NAME_1 "Front-Left"
@@ -3354,10 +3354,11 @@
  */
 #define CUSTOM_USER_MENUS
 #if ENABLED(CUSTOM_USER_MENUS)
+  //#define CUSTOM_RETURN_READY_PRINT
   //#define CUSTOM_USER_MENU_TITLE "Custom Commands"
   //#define USER_SCRIPT_DONE "M117 User Script Done"
   //#define USER_SCRIPT_AUDIBLE_FEEDBACK
-  //#define USER_SCRIPT_RETURN  // Return to status screen after a script
+  #define USER_SCRIPT_RETURN  // Return to status screen after a script
 
   #define USER_CMD_1_ENABLE	
   #define USER_DESC_1 "Home & UBL Info"
@@ -3377,7 +3378,7 @@
   
   #define USER_CMD_5_ENABLE
   #define USER_DESC_5 "Aparcar"
-  #define USER_GCODE_5 "G28 X;\nG28 Y;\nG91;\nG1 Z10;\nG90;\nG1 X300 Y300;"
+  #define USER_GCODE_5 "G28 X;\nG28 Y;\nG91;\nG1 Z10;\nG90;\nG1 X305 Y270;"
 
   #define USER_CMD_6_ENABLE
   #define USER_DESC_6 "Resetejar"
