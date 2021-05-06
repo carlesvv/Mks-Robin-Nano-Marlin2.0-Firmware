@@ -993,7 +993,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -29.87, 4.159, -01.010} // inductiu
+#define NOZZLE_TO_PROBE_OFFSET { -29.87, 4.159, -0.420} // inductiu
 //#define NOZZLE_TO_PROBE_OFFSET { -58.5316, 5.85755, -2.304} // BL Touch
 
 // Most probes should stay away from the edges of the bed, but
@@ -1135,7 +1135,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
