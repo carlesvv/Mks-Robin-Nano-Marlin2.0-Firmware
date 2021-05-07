@@ -498,9 +498,9 @@
     #define DEFAULT_Kd_LIST { 56.60, 56.60 }
   #else
     // Creality Ender-5 Plus
-    #define DEFAULT_Kp 30.31
-    #define DEFAULT_Ki 4.20
-    #define DEFAULT_Kd 54.69
+    #define DEFAULT_Kp 12.42
+    #define DEFAULT_Ki 0.68
+    #define DEFAULT_Kd 56.49
   #endif
 #endif // PIDTEMP
 
