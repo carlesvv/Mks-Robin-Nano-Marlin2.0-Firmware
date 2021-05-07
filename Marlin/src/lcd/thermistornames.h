@@ -144,5 +144,10 @@
   #define THERMISTOR_NAME "Dummy 2"
 #elif THERMISTOR_ID == 1000
   #define THERMISTOR_NAME "Custom"
+  
+// Custom Temperature thermistors
+
+  #elif THERMISTOR_ID == 300
+  #define THERMISTOR_NAME " Mellow TH-NTC100K/3950"
 
 #endif // THERMISTOR_ID
