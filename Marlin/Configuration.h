@@ -540,9 +540,9 @@
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   // Creality Ender-5 Plus
-  #define DEFAULT_bedKp 37.87
-  #define DEFAULT_bedKi 7.05
-  #define DEFAULT_bedKd 135.63
+  #define DEFAULT_bedKp 48.28
+  #define DEFAULT_bedKi 9.41
+  #define DEFAULT_bedKd 165.16
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -743,7 +743,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 319.916, 320.712, 1600, 1380 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 319.916, 320.712, 1600, 1359.60 }
 
 /**
  * Default Max Feed Rate (mm/s)
