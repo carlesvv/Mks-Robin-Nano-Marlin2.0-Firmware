@@ -558,9 +558,9 @@
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
   // Creality Ender-5 Plus
-  #define DEFAULT_bedKp 38.35
-  #define DEFAULT_bedKi 6.93
-  #define DEFAULT_bedKd 141.42
+  #define DEFAULT_bedKp 31.54
+  #define DEFAULT_bedKi 5.62
+  #define DEFAULT_bedKd 118.03
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -813,11 +813,11 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 240, 240, 10, 60 }
+#define DEFAULT_MAX_FEEDRATE          { 200, 200, 15, 60 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 240, 240, 10, 60 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 200, 200, 15, 60 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1055,7 +1055,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -29.8, -13.5, -1.850} // inductiu
+#define NOZZLE_TO_PROBE_OFFSET { -29.8, -13.5, -1.640} // inductiu
 //#define NOZZLE_TO_PROBE_OFFSET { -58.5316, 5.85755, -2.304} // BL Touch
 
 // Most probes should stay away from the edges of the bed, but
