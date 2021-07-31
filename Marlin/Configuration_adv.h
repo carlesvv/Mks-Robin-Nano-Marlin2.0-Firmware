@@ -3541,7 +3541,7 @@
  */
 
 // Custom Menu: Main Menu
-//#define CUSTOM_MENU_MAIN
+#define CUSTOM_MENU_MAIN
 #if ENABLED(CUSTOM_MENU_MAIN)
   //#define CUSTOM_RETURN_READY_PRINT
   #define CUSTOM_MENU_MAIN_TITLE "Funcions"
