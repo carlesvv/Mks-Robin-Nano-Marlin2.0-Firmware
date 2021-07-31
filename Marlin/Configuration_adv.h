@@ -1847,7 +1847,7 @@
 #define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 0.00    // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0.08    // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
   //#define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
 #endif
@@ -2547,7 +2547,7 @@
   #if AXIS_IS_TMC(Z2)
     #define Z2_CURRENT      950
     #define Z2_CURRENT_HOME Z2_CURRENT
-    #define Z2_MICROSTEPS    8
+    #define Z2_MICROSTEPS    Z_MICROSTEPS
     #define Z2_RSENSE         0.11
     #define Z2_CHAIN_POS     -1
     //#define Z2_INTERPOLATE true
@@ -2556,7 +2556,7 @@
   #if AXIS_IS_TMC(Z3)
     #define Z3_CURRENT      950
     #define Z3_CURRENT_HOME Z3_CURRENT
-    #define Z3_MICROSTEPS    8
+    #define Z3_MICROSTEPS    Z_MICROSTEPS
     #define Z3_RSENSE         0.11
     #define Z3_CHAIN_POS     -1
     //#define Z3_INTERPOLATE true
@@ -2565,7 +2565,7 @@
   #if AXIS_IS_TMC(Z4)
     #define Z4_CURRENT      950
     #define Z4_CURRENT_HOME Z4_CURRENT
-    #define Z4_MICROSTEPS    8
+    #define Z4_MICROSTEPS    Z_MICROSTEPS
     #define Z4_RSENSE         0.11
     #define Z4_CHAIN_POS     -1
     //#define Z4_INTERPOLATE true
@@ -2581,7 +2581,7 @@
 
   #if AXIS_IS_TMC(E1)
     #define E1_CURRENT      580
-    #define E1_MICROSTEPS    16
+    #define E1_MICROSTEPS    E0_MICROSTEPS
     #define E1_RSENSE         0.11
     #define E1_CHAIN_POS     -1
     //#define E1_INTERPOLATE true
@@ -2589,7 +2589,7 @@
 
   #if AXIS_IS_TMC(E2)
     #define E2_CURRENT      580
-    #define E2_MICROSTEPS    16
+    #define E2_MICROSTEPS    E0_MICROSTEPS
     #define E2_RSENSE         0.11
     #define E2_CHAIN_POS     -1
     //#define E2_INTERPOLATE true
@@ -2597,7 +2597,7 @@
 
   #if AXIS_IS_TMC(E3)
     #define E3_CURRENT      580
-    #define E3_MICROSTEPS    16
+    #define E3_MICROSTEPS    E0_MICROSTEPS
     #define E3_RSENSE         0.11
     #define E3_CHAIN_POS     -1
     //#define E3_INTERPOLATE true
@@ -2605,7 +2605,7 @@
 
   #if AXIS_IS_TMC(E4)
     #define E4_CURRENT      580
-    #define E4_MICROSTEPS    16
+    #define E4_MICROSTEPS    E0_MICROSTEPS
     #define E4_RSENSE         0.11
     #define E4_CHAIN_POS     -1
     //#define E4_INTERPOLATE true
@@ -2613,7 +2613,7 @@
 
   #if AXIS_IS_TMC(E5)
     #define E5_CURRENT      580
-    #define E5_MICROSTEPS    16
+    #define E5_MICROSTEPS    E0_MICROSTEPS
     #define E5_RSENSE         0.11
     #define E5_CHAIN_POS     -1
     //#define E5_INTERPOLATE true
@@ -2621,7 +2621,7 @@
 
   #if AXIS_IS_TMC(E6)
     #define E6_CURRENT      580
-    #define E6_MICROSTEPS    16
+    #define E6_MICROSTEPS    E0_MICROSTEPS
     #define E6_RSENSE         0.11
     #define E6_CHAIN_POS     -1
     //#define E6_INTERPOLATE true
@@ -2629,7 +2629,7 @@
 
   #if AXIS_IS_TMC(E7)
     #define E7_CURRENT      580
-    #define E7_MICROSTEPS    16
+    #define E7_MICROSTEPS    E0_MICROSTEPS
     #define E7_RSENSE         0.11
     #define E7_CHAIN_POS     -1
     //#define E7_INTERPOLATE true
@@ -2726,7 +2726,6 @@
    * Define your own with:
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  //#define CHOPPER_TIMING CHOPPER_DEFAULT_12V        // All axes (override below)
   #define CHOPPER_TIMING CHOPPER_DEFAULT_24V
   //#define CHOPPER_TIMING_X  CHOPPER_DEFAULT_12V   // For X Axes (override below)
   //#define CHOPPER_TIMING_X2 CHOPPER_DEFAULT_12V
