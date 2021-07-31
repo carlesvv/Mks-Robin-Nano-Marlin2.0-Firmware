@@ -21,9 +21,10 @@
  */
 #pragma once
 
-#if NOT_TARGET(STM32F4, STM32F4xx)
-  #error "Oops! Select an STM32F4 board in 'Tools > Board.'"
-#elif HOTENDS > 2 || E_STEPPERS > 2
+#define ALLOW_STM32DUINO
+#include "env_validate.h"
+
+#if HOTENDS > 2 || E_STEPPERS > 2
   #error "MKS Robin Nano V3 supports up to 2 hotends / E-steppers."
 #elif HAS_FSMC_TFT
   #error "MKS Robin Nano V3 doesn't support FSMC-based TFT displays."
@@ -46,9 +47,8 @@
 //#define FLASH_EEPROM_EMULATION                  // Use Flash-based EEPROM emulation
 #define I2C_EEPROM
 #define MARLIN_EEPROM_SIZE                0x1000  // 4KB
-
-#define I2C_SCL_PIN                       PB6 
-#define I2C_SDA_PIN                       PB7
+#define I2C_SCL_PIN                         PB6
+#define I2C_SDA_PIN                         PB7
 
 //
 // Release PB4 (Z_DIR_PIN) from JTAG NRST role
@@ -208,6 +208,7 @@
 #if ENABLED(MKS_TEST)
   #define MKS_TEST_POWER_LOSS_PIN         PW_DET   // PW_DET
   #define MKS_TEST_PS_ON_PIN              PW_OFF   // PW_OFF
+  #define MKS_TEST_Z_MAX_PIN              PC4      // Z_MAX_PIN
 #endif
 
 //#define POWER_LOSS_PIN                    PW_DET
@@ -264,10 +265,10 @@
 //
 // LCD / Controller
 #define SPI_FLASH
-#define HAS_SPI_FLASH                          1
-#define SPI_DEVICE                             2
-#define SPI_FLASH_SIZE                 0x1000000
 #if ENABLED(SPI_FLASH)
+  #define HAS_SPI_FLASH                     1
+  #define SPI_DEVICE                        2
+  #define SPI_FLASH_SIZE                    0x1000000
   #define W25QXX_CS_PIN                     PB12
   #define W25QXX_MOSI_PIN                   PC3
   #define W25QXX_MISO_PIN                   PC2
@@ -339,7 +340,9 @@
 
   #define TFT_BUFFER_SIZE                  14400
 
-#elif HAS_SPI_LCD
+  #define TFT_DRIVER                       ST7796
+
+#else
   #define BEEPER_PIN                        PC5
   #define BTN_ENC                           PE13
   #define LCD_PINS_ENABLE                   PD13
@@ -370,8 +373,8 @@
       #define LCD_PINS_D7                   PD10
     #endif
 
-    #define BOARD_ST7920_DELAY_1    DELAY_NS(96)
-    #define BOARD_ST7920_DELAY_2    DELAY_NS(48)
+    #define BOARD_ST7920_DELAY_1    DELAY_NS(200)
+    #define BOARD_ST7920_DELAY_2    DELAY_NS(400)
     #define BOARD_ST7920_DELAY_3    DELAY_NS(600)
 
   #endif // !MKS_MINI_12864

@@ -47,13 +47,15 @@ static lv_obj_t *scr;
 static lv_obj_t *labelExt1, *labelFan, *labelZpos, *labelTime;
 static lv_obj_t *labelPause, *labelStop, *labelOperat;
 static lv_obj_t *bar1, *bar1ValueText;
-static lv_obj_t *buttonPause, *buttonOperat, *buttonStop, *buttonExt1, *buttonExt2, *buttonBedstate, *buttonFanstate, *buttonZpos;
+static lv_obj_t *buttonPause, *buttonOperat, *buttonStop, *buttonExt1, *buttonFanstate, *buttonZpos;
 
 #if HAS_MULTI_EXTRUDER && DISABLED(SINGLENOZZLE)
   static lv_obj_t *labelExt2;
+  static lv_obj_t *buttonExt2;
 #endif
 
 #if HAS_HEATED_BED
+  static lv_obj_t *buttonBedstate;
   static lv_obj_t* labelBed;
 #endif
 
@@ -104,7 +106,6 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
         }
       #endif
       break;
-
     case ID_STOP:
       lv_clear_printing();
       lv_draw_dialog(DIALOG_TYPE_STOP);
@@ -114,23 +115,23 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       lv_draw_operation();
       break;
     case ID_TEMP_EXT:
-          uiCfg.curTempType = 0;
-          lv_clear_printing();
-          lv_draw_preHeat();
-          break;
+      uiCfg.curTempType = 0;
+      lv_clear_printing();
+      lv_draw_preHeat();
+      break;
     case ID_TEMP_BED:
-              uiCfg.curTempType = 1;
-              lv_clear_printing();
-              lv_draw_preHeat();
-              break;
+      uiCfg.curTempType = 1;
+      lv_clear_printing();
+      lv_draw_preHeat();
+      break;
     case ID_BABYSTEP:
-            lv_clear_printing();
-            lv_draw_baby_stepping();
-            break;
+      lv_clear_printing();
+      lv_draw_baby_stepping();
+      break;
     case ID_FAN:
-            lv_clear_printing();
-            lv_draw_fan();
-            break;
+      lv_clear_printing();
+      lv_draw_fan();
+      break;
   }
 }
 
@@ -234,7 +235,7 @@ void disp_bed_temp() {
 }
 
 void disp_fan_speed() {
-  sprintf_P(public_buf_l, PSTR("%3d"), thermalManager.fan_speed[0]);
+  sprintf_P(public_buf_l, PSTR("%d%%"), (int)thermalManager.fanSpeedPercent(0));
   lv_label_set_text(labelFan, public_buf_l);
 }
 
