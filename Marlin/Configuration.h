@@ -1055,7 +1055,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -29.8, -13.5, -1.640} // inductiu
+#define NOZZLE_TO_PROBE_OFFSET { -29.8, -13.5, -1.800} // inductiu
 //#define NOZZLE_TO_PROBE_OFFSET { -58.5316, 5.85755, -2.304} // BL Touch
 
 // Most probes should stay away from the edges of the bed, but
@@ -1063,7 +1063,6 @@
 #define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
-//#define XY_PROBE_SPEED (50*60) es el maeix que el seguent?
 #define XY_PROBE_FEEDRATE (50*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
