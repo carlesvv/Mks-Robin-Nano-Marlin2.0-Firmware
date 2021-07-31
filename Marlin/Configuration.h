@@ -46,7 +46,7 @@
  *
  * Example Configs:     https://github.com/MarlinFirmware/Configurations/branches/all
  *
- * Prusa Calculator:    https://blog.prusaprinters.org/calculator_3416/
+ * Průša Calculator:    https://blog.prusaprinters.org/calculator_3416/
  *
  * Calibration Guides:  https://reprap.org/wiki/Calibration
  *                      https://reprap.org/wiki/Triffid_Hunter%27s_Calibration_Guide
@@ -162,11 +162,11 @@
  * Multi-Material Unit
  * Set to one of these predefined models:
  *
- *   PRUSA_MMU1           : Prusa MMU1 (The "multiplexer" version)
- *   PRUSA_MMU2           : Prusa MMU2
- *   PRUSA_MMU2S          : Prusa MMU2S (Requires MK3S extruder with motion sensor, EXTRUDERS = 5)
- *   EXTENDABLE_EMU_MMU2  : MMU with configurable number of filaments (ERCF, SMuFF or similar with Prusa MMU2 compatible firmware)
- *   EXTENDABLE_EMU_MMU2S : MMUS with configurable number of filaments (ERCF, SMuFF or similar with Prusa MMU2 compatible firmware)
+ *   PRUSA_MMU1           : Průša MMU1 (The "multiplexer" version)
+ *   PRUSA_MMU2           : Průša MMU2
+ *   PRUSA_MMU2S          : Průša MMU2S (Requires MK3S extruder with motion sensor, EXTRUDERS = 5)
+ *   EXTENDABLE_EMU_MMU2  : MMU with configurable number of filaments (ERCF, SMuFF or similar with Průša MMU2 compatible firmware)
+ *   EXTENDABLE_EMU_MMU2S : MMUS with configurable number of filaments (ERCF, SMuFF or similar with Průša MMU2 compatible firmware)
  *
  * Requires NOZZLE_PARK_FEATURE to park print head in case MMU unit fails.
  * See additional options in Configuration_adv.h.
@@ -1056,7 +1056,6 @@
  *     O-- FRONT --+
  */
 #define NOZZLE_TO_PROBE_OFFSET { -29.8, -13.5, -1.800} // inductiu
-//#define NOZZLE_TO_PROBE_OFFSET { -58.5316, 5.85755, -2.304} // BL Touch
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
