@@ -25,14 +25,16 @@
 #define TOOL_TEXT_RU                    "инструмент"
 #define PREHEAT_TEXT_RU                 " нагрев"
 #define MOVE_TEXT_RU                    "движение"
+#define TEXT_ZOFFSET_RU                 "Z offset"
 #define HOME_TEXT_RU                    "домой"
 #define PRINT_TEXT_RU                   " печать"
 #define EXTRUDE_TEXT_RU                 "экструзия"
 #define LEVELING_TEXT_RU                "уровень"
-#define MLEVELING_TEXT_RU                "углы"
 #define AUTO_LEVELING_TEXT_RU           "aвтоуровень"
 #define SET_TEXT_RU                     "настройки"
 #define MORE_TEXT_RU                    "больше"
+#define MORE_GCODE_RU                   "G-код"
+#define MORE_ENTER_GCODE_RU             "Введите G-код"
 
 #define ADD_TEXT_RU                     "добавить"
 #define DEC_TEXT_RU                     "уменьшить"
@@ -51,8 +53,6 @@
 #define TOOL_MOVE_RU                    "движение"
 #define TOOL_HOME_RU                    "домой"
 #define TOOL_LEVELING_RU                "уровень"
-#define TOOL_MLEVELING_RU                "углы"
-//#define TOOL_MLEVELING_RU                "выровнять\nуглы"    //Malderin
 #define TOOL_AUTO_LEVELING_RU           "aвтоуровень"
 #define TOOL_FILAMENT_RU                "замена"
 #define TOOL_MORE_RU                    "больше"
@@ -102,7 +102,6 @@
 #define MOTOR_OFF_XY_TEXT_RU            "Off-XY"
 #define SHUTDOWN_TEXT_RU                "выключение"
 #define MACHINE_PARA_RU                 "конфиг"
-//#define EEPROM_SETTINGS_RU              "Eeprom Set"
 
 #define U_DISK_TEXT_RU                  "U диск"
 #define SD_CARD_TEXT_RU                 "SD диск"
@@ -138,26 +137,12 @@
 #define FILAMENT_EXT1_TEXT_RU           "экструдер2"
 #define FILAMENT_HEAT_TEXT_RU           "нагрев"
 #define FILAMENT_STOP_TEXT_RU           "стоп"
-//#define FILAMENT_CHANGE_TEXT_RU           "замена"
 #define FILAMENT_TIPS2_TEXT_RU          "T:"
 #define FILAMENT_TIPS3_TEXT_RU          "втянуть..."
 #define FILAMENT_TIPS4_TEXT_RU          "вядавить..."
 #define FILAMENT_TIPS5_TEXT_RU          "Низкая температура, \nнеобходим нагрев"
 #define FILAMENT_TIPS6_TEXT_RU          "завершено"
 
-#if 0
-  #define FILAMENT_REPLAYS_IDLE_TEXT_RU                 "Please click <втянуть> or <выдавить> \nto replace filament!"
-  #define FILAMENT_CHANGE_TEXT_RU                       "Please click <втянуть> or <выдавить>,\nAfter pinter pause."
-  #define FILAMENT_DIALOG_LOAD_HEAT_TIPS_RU             "Heating up the nozzle,please wait..."
-  #define FILAMENT_DIALOG_UNLOAD_HEAT_TIPS_RU           "Heating up the nozzle,please wait..."
-  #define FILAMENT_DIALOG_LOAD_CONFIRM1_TIPS_RU         "Heat completed,please load filament to extruder,and click <да> for start loading."
-  #define FILAMENT_DIALOG_LOAD_CONFIRM2_TIPS_RU         "Please load filament to extruder,and click <да> for start loading."
-  #define FILAMENT_DIALOG_UNLOAD_CONFIRM_TIPS_RU        "Heat completed,please click <да> for start unloading.!"
-  #define FILAMENT_DIALOG_LOADING_TIPS_RU               "Is loading ,please wait!"
-  #define FILAMENT_DIALOG_UNLOADING_TIPS_RU             "Is unloading,please wait!"
-  #define FILAMENT_DIALOG_LOAD_COMPLETE_TIPS_RU         "Load filament completed,click <да> for return!"
-  #define FILAMENT_DIALOG_UNLOAD_COMPLETE_TIPS_RU       "Unload filament completed,click <да> for return!"
-#endif
 #define FILAMENT_CHANGE_TEXT_RU                       "Please click <Load> \nor <unload>,After \npinter pause."
 #define FILAMENT_DIALOG_LOAD_HEAT_TIPS_RU             "Heating up the nozzle,\nplease wait..."
 #define FILAMENT_DIALOG_UNLOAD_HEAT_TIPS_RU           "Heating up the nozzle,\nplease wait..."
@@ -169,14 +154,10 @@
 #define FILAMENT_DIALOG_LOAD_COMPLETE_TIPS_RU         "Load filament completed,\nclick <confirm> for return!"
 #define FILAMENT_DIALOG_UNLOAD_COMPLETE_TIPS_RU       "Unload filament completed,\nclick <confirm> for return!"
 
-
 #define PRE_HEAT_EXT_TEXT_RU                "E"
 #define PRE_HEAT_BED_TEXT_RU                "стол"
 
 #define FILE_LOADING_RU                     "загрузка......"
-#if 0
-  #define NO_FILE_AND_CHECK_RU                "Файлы не найдены! Вставьте SD-карту или диск U!"
-#endif
 #define NO_FILE_AND_CHECK_RU                "нет файла,попробуйте ещё раз!"
 
 #define NO_FILE_RU                          "нет файла!"
@@ -214,7 +195,7 @@
 #define TITLE_HOME_RU                       "Home"
 #define TITLE_EXTRUDE_RU                    "экструзия"
 #define TITLE_LEVELING_RU                   "уровень"
-#define TITLE_MLEVELING_RU                   "углы"
+#define TITLE_MLEVELING_RU                  "углы"
 #define TITLE_SET_RU                        "настройки"
 #define TITLE_MORE_RU                       "больше"
 #define TITLE_CHOOSEFILE_RU                 "файла"
@@ -246,7 +227,6 @@
 #define DIALOG_CANCEL_PRINT_RU              "стоп?"
 #define DIALOG_STOP_RU                      "стоп"
 #define DIALOG_REPRINT_FROM_BREAKPOINT_RU   "продолжить?"
-//#define DIALOG_UNBIND_PRINTER_RU          "разрыв?"
 #define DIALOG_ERROR_TIPS1_RU               "ошибка:нет файла, попробуйте ещё раз."
 #define DIALOG_ERROR_TIPS2_RU               "ошибка:сбой передачи. установите скорость \nпередачи данных как на плате управления!"
 #define DIALOG_ERROR_TIPS3_RU               "ошибка: имя файла слишком длинное!"
@@ -257,6 +237,8 @@
 #define DIALOG_PRINT_TIME_RU                "Время печати: "
 #define DIALOG_REPRINT_RU                   "Print again"
 #define DIALOG_WIFI_ENABLE_TIPS_RU          "The wifi module is being configured,\nplease wait a moment....."
+#define DIALOG_PAUSING_TIPS_RU              "Машина останавливается ..."
+#define DIALOG_AUTO_LEVELING_TIPS_RU        "Автоматическое выравнивание, подождите ..."
 
 #define MESSAGE_PAUSING_RU            "Стоянка..."
 #define MESSAGE_CHANGING_RU           "Подождите, пока начнется смена филамента"
@@ -276,21 +258,13 @@
 #define EEPROM_SETTINGS_READ_RU       "Чтение настроек из EEPROM"
 #define EEPROM_SETTINGS_REVERT_RU     "Bосстановить заводские настройки по умолчанию"
 
-// #define EEPROM_STORE_TIPS_RU          "Сохранить настройки в EEPROM?"
-// #define EEPROM_READ_TIPS_RU           "Читать настройки из EEPROM?"
-// #define EEPROM_REVERT_TIPS_RU         "Revert settings to factory defaults?"
+#define MORE_CUSTOM1_TEXT_RU  MAIN_MENU_ITEM_1_DESC
+#define MORE_CUSTOM2_TEXT_RU  MAIN_MENU_ITEM_2_DESC
+#define MORE_CUSTOM3_TEXT_RU  MAIN_MENU_ITEM_3_DESC
+#define MORE_CUSTOM4_TEXT_RU  MAIN_MENU_ITEM_4_DESC
+#define MORE_CUSTOM5_TEXT_RU  MAIN_MENU_ITEM_5_DESC
+#define MORE_CUSTOM6_TEXT_RU  MAIN_MENU_ITEM_6_DESC
 
-#define MORE_CUSTOM1_TEXT_RU  USER_DESC_1
-#define MORE_CUSTOM2_TEXT_RU  USER_DESC_2
-#define MORE_CUSTOM3_TEXT_RU  USER_DESC_3
-#define MORE_CUSTOM4_TEXT_RU  USER_DESC_4
-#define MORE_CUSTOM5_TEXT_RU  USER_DESC_5
-#define MORE_CUSTOM6_TEXT_RU  USER_DESC_6
-#define MORE_CUSTOM7_TEXT_RU  USER_DESC_7
-
-//Malderin translate
-//
-//
 #define EEPROM_STORE_TIPS_RU          "Cохранить настройки в EEPROM?"
 #define EEPROM_READ_TIPS_RU           "читать настройки из EEPROM?"
 #define EEPROM_REVERT_TIPS_RU         "Cбросить настройки к значениям по умолчанию?"
@@ -310,13 +284,28 @@
 #define ADVANCE_CONFIG_RU              "Pасширенные настройки"
 #define MACHINE_FILAMENT_CONFIG_RU     "Hастройки филамента"
 #define ENCODER_SETTINGS_RU            "Hастройки энкодера"
-
+#define X_MODE_SETTINGS_RU             "X-mode"
+#define EXTRUDE_OFFSET_SETTINGS_RU     "T-offset"
 
 #define LEVELING_CONF_TITLE_RU          "Hастройки принтера>Hастройки уровня"
 #define LEVELING_PARA_CONF_RU           "настройки уровня"
 #define LEVELING_MANUAL_POS_RU          "настройки координат для уровня"
 #define LEVELING_AUTO_COMMAND_RU        "настройки комманд увтоуровня"
 #define LEVELING_AUTO_ZOFFSET_RU        "координаты смещения сопла"
+#define LEVELING_TOUCHMI_RU             "Settings-TouchMi-Probe"
+#define TM_INIT_RU                      "Init"
+#define TM_ZOFFSETPOS_RU                "Zoffset+"
+#define TM_ZOFFSETNEG_RU                "Zoffset-"
+#define TM_SAVE_RU                      "Save"
+#define TM_TEST_RU                      "Test"
+
+#define BLTOUCH_LEVELING_TITTLE_RU      "Settings>BL-Touch Probe"
+#define BLTOUCH_LEVELING_RU             "BL-Touch Probe"
+#define BLTOUCH_INIT_RU                 "Init"
+#define BLTOUCH_ZOFFSETPOS_RU           "Zoffset+"
+#define BLTOUCH_ZOFFSETNEG_RU           "Zoffset-"
+#define BLTOUCH_SAVE_RU                 "Save"
+#define BLTOUCH_TEST_RU                 "Test"
 
 #define MACHINE_CONFIG_TITLE_RU         "Hастройки принтера>настройки притера"
 #define MAXFEEDRATE_CONF_RU             "настройки максимальной скорости"
@@ -393,24 +382,15 @@
 #define ENCODER_CONF_TITLE_RU           "Hастройки принтера>Hастройки энкодера"
 #define ENCODER_CONF_TEXT_RU            "энкодер используется?"
 
-#define WIFI_SETTINGS_TITLE_RU		      "Hастройки принтера>параметры Wi-Fi"
-#define WIFI_SETTINGS_RU							  "Hастройки параметров Wi-Fi"
-#define WIFI_SETTINGS_MODE_RU			      "Wi-Fi режим"
-#define WIFI_SETTINGS_NAME_RU		       	"Wi-Fi сеть: "
-#define WIFI_SETTINGS_PASSWORD_RU	      "Wi-Fi пароль: "
-#define WIFI_SETTINGS_CLOUD_RU		      "Xотите использовать облачный сервис?"
-#define WIFI_SETTINGS_CONFIG_RU		      "Kонф."
-#define WIFI_SETTINGS_EDIT_RU	          "Pед."
-#define WIFI_CONFIG_TIPS_RU			        "Cконфигурировать Wi-Fi?"
+#define DUAL_X_MODE_CONF_TITLE_RU       "Machine Settings>Dual x mode"
+#define FULL_CONTROL_MODE_RU	        "Full control mode"
+#define AUTO_PARK_MODE_RU		        "Auto park mode"
+#define DUPLICATION_MODE_RU	            "Duplication mode"
+#define MIRROR_MODE_RU		            "Mirrored mode"
 
-#define DIALOG_UPLOAD_ING_RU            "загрузка......"
-#define DIALOG_UPLOAD_ERROR_RU          "ошибка загрузки"
-#define DIALOG_UPLOAD_FINISH_RU         "загрузка завершена"
-#define DIALOG_UPLOAD_SIZE_RU           "размер"
-#define DIALOG_UPLOAD_TIME_RU           "время"
-#define DIALOG_UPLOAD_SPEED_RU          "скорость"
-//#define DIALOG_UPDATE_WIFI_FIRMWARE_RU  "Updating wifi model firmware"
-//#define DIALOG_UPDATE_WIFI_WEB_RU       "Updating wifi model web data"
-#define DIALOG_UPDATE_NO_DEVICE_RU 			"пожалуйста проверьте \nвставлена ли карта памяти!"
+#define HOTEND_OFFSET_SETTINGS_RU       "Machine Settings>Hotend offset"
+#define HOTEND_OFFSET_X_RU              "Hotend X2 offset"
+#define HOTEND_OFFSET_Y_RU              "Hotend Y2 offset"
+#define HOTEND_OFFSET_Z_RU              "Hotend Z2 offset"
 
 //end of Malderin translate

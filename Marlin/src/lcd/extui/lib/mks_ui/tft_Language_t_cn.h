@@ -87,6 +87,20 @@
 #define LEVELING_MANUAL_POS_T_CN        "手動調平坐標設置"
 #define LEVELING_AUTO_COMMAND_T_CN      "自動調平指令設置"
 #define LEVELING_AUTO_ZOFFSET_T_CN      "擠出頭與調平開關偏移設置"
+#define LEVELING_TOUCHMI_T_CN           "機器參數>TouchMi-Probe"
+#define TM_INIT_T_CN                    "初始化"
+#define TM_ZOFFSETPOS_T_CN              "Zoffset+"
+#define TM_ZOFFSETNEG_T_CN              "Zoffset-"
+#define TM_SAVE_T_CN                    "保存"
+#define TM_TEST_T_CN                    "測試"
+
+#define BLTOUCH_LEVELING_TITTLE_T_CN    "機器參數>BL-Touch Probe"
+#define BLTOUCH_LEVELING_T_CN           "BL-Touch Probe"
+#define BLTOUCH_INIT_T_CN               "初始化"
+#define BLTOUCH_ZOFFSETPOS_T_CN         "Zoffset+"
+#define BLTOUCH_ZOFFSETNEG_T_CN         "Zoffset-"
+#define BLTOUCH_SAVE_T_CN               "保存"
+#define BLTOUCH_TEST_T_CN               "測試"
 
 #define LEVELING_PARA_CONF_TITLE_T_CN   "調平參數"
 #define AUTO_LEVELING_ENABLE_T_CN       "自動調平"
@@ -214,6 +228,8 @@
 #define ENABLE_PINS_CONF_T_CN           "電機使能腳電平設置"
 #define WIFI_SETTINGS_T_CN              "Wi-Fi參數設置"
 #define ENCODER_SETTINGS_T_CN           "旋鈕設置"
+#define X_MODE_SETTINGS_T_CN            "打印模式"
+#define HOTEND_OFFSET_SETTINGS_T_CN     "擠出頭偏移"
 
 #define Z2_AND_Z2ENDSTOP_CONF_TITLE_T_CN  "雙z軸雙限位設置"
 #define Z2_ENABLE_T_CN                    "啟用Z2軸"
@@ -226,18 +242,18 @@
 #define Z_ENABLE_PINS_INVERT_T_CN       "Z軸電機使能電平"
 #define E_ENABLE_PINS_INVERT_T_CN       "E軸電機使能電平"
 
-#define PAUSE_POSITION_T_CN             "打印暫停位置設置"
-#define PAUSE_POSITION_X_T_CN           "X軸暫停位置(絕對位置,-1無效)"
-#define PAUSE_POSITION_Y_T_CN           "Y軸暫停位置(絕對位置,-1無效)"
-#define PAUSE_POSITION_Z_T_CN           "Z軸暫停位置(相對位置,-1無效)"
-#define WIFI_SETTINGS_TITLE_T_CN		    "機器參數>Wi-Fi設置"
-#define WIFI_SETTINGS_MODE_T_CN			    "Wi-Fi 模式"
-#define WIFI_SETTINGS_NAME_T_CN			    "Wi-Fi 名稱: "
-#define WIFI_SETTINGS_PASSWORD_T_CN	    "Wi-Fi 密碼: "
-#define WIFI_SETTINGS_CLOUD_T_CN		    "是否使用雲服務?"
-#define WIFI_SETTINGS_CONFIG_T_CN		    "配置"
-#define WIFI_SETTINGS_EDIT_T_CN			    "編輯"
-#define WIFI_CONFIG_TIPS_T_CN			      "進行Wi-Fi配置?"
+#define PAUSE_POSITION_T_CN         "打印暫停位置設置"
+#define PAUSE_POSITION_X_T_CN       "X軸暫停位置(絕對位置,-1無效)"
+#define PAUSE_POSITION_Y_T_CN       "Y軸暫停位置(絕對位置,-1無效)"
+#define PAUSE_POSITION_Z_T_CN       "Z軸暫停位置(相對位置,-1無效)"
+#define WIFI_SETTINGS_TITLE_T_CN    "機器參數>Wi-Fi設置"
+#define WIFI_SETTINGS_MODE_T_CN     "Wi-Fi 模式"
+#define WIFI_SETTINGS_NAME_T_CN     "Wi-Fi 名稱: "
+#define WIFI_SETTINGS_PASSWORD_T_CN "Wi-Fi 密碼: "
+#define WIFI_SETTINGS_CLOUD_T_CN    "是否使用雲服務?"
+#define WIFI_SETTINGS_CONFIG_T_CN   "配置"
+#define WIFI_SETTINGS_EDIT_T_CN     "編輯"
+#define WIFI_CONFIG_TIPS_T_CN       "進行Wi-Fi配置?"
 
 #define OFFSET_TITLE_T_CN               "機器參數>偏移設置"
 #define OFFSET_X_T_CN                   "X軸與調平開關偏移"
@@ -253,17 +269,30 @@
 #define ENCODER_CONF_TITLE_T_CN                 "機器參數>旋鈕設置"
 #define ENCODER_CONF_TEXT_T_CN                  "是否使用旋鈕功能?"
 
+#define DUAL_X_MODE_CONF_TITLE_T_CN             "機器參數>打印模式"
+#define FULL_CONTROL_MODE_T_CN	                "單頭模式"
+#define AUTO_PARK_MODE_T_CN		                "雙頭模式"
+#define DUPLICATION_MODE_T_CN	                "復制模式"
+#define MIRROR_MODE_T_CN		                "鏡像模式"
+
+#define HOTEND_OFFSET_CONF_TITLE_T_CN           "機器參數>擠出頭偏移"
+#define HOTEND_OFFSET_X_T_CN                    "擠出頭2 X軸方向偏移"
+#define HOTEND_OFFSET_Y_T_CN                    "擠出頭2 Y軸方向偏移"
+#define HOTEND_OFFSET_Z_T_CN                    "擠出頭2 Z軸方向偏移"
+
 #define TOOL_TEXT_T_CN                  "工具"
 #define PREHEAT_TEXT_T_CN               "預熱"
-#define  MOVE_TEXT_T_CN                 "移動"
+#define MOVE_TEXT_T_CN                  "移動"
+#define TEXT_ZOFFSET_T_CN               "Z offset"
 #define HOME_TEXT_T_CN                  "回零"
 #define PRINT_TEXT_T_CN                 "打印"
 #define EXTRUDE_TEXT_T_CN               "擠出"
 #define LEVELING_TEXT_T_CN              "調平"
-#define MLEVELING_TEXT_T_CN              "調平"
 #define AUTO_LEVELING_TEXT_T_CN         "自動調平"
 #define SET_TEXT_T_CN                   "設置"
 #define MORE_TEXT_T_CN                  "更多"
+#define MORE_GCODE_T_CN                 "G-Code"
+#define MORE_ENTER_GCODE_T_CN           "Enter G-Code"
 
 #define ADD_TEXT_T_CN                   "增加"
 #define DEC_TEXT_T_CN                   "減少"
@@ -282,7 +311,6 @@
 #define TOOL_MOVE_T_CN                  "移動"
 #define TOOL_HOME_T_CN                  "回零"
 #define TOOL_LEVELING_T_CN              "調平"
-#define TOOL_MLEVELING_T_CN              "調平"
 #define TOOL_AUTO_LEVELING_T_CN         "自動調平"
 #define TOOL_FILAMENT_T_CN              "換料"
 #define TOOL_MORE_T_CN                  "更多"
@@ -367,19 +395,12 @@
 #define FILAMENT_EXT1_TEXT_T_CN         "噴頭2"
 #define FILAMENT_HEAT_TEXT_T_CN         "預熱"
 #define FILAMENT_STOP_TEXT_T_CN         "停止"
-//#define FILAMENT_CHANGE_TEXT_T_CN     "準備換料"
 #define FILAMENT_TIPS2_TEXT_T_CN        "T:"
 #define FILAMENT_TIPS3_TEXT_T_CN        "正在進料"
 #define FILAMENT_TIPS4_TEXT_T_CN        "正在退料"
 #define FILAMENT_TIPS5_TEXT_T_CN        "溫度太低,請先預熱"
 #define FILAMENT_TIPS6_TEXT_T_CN        "換料完成"
-
-#if 0
-  #define FILAMENT_REPLAYS_IDLE_TEXT_T_CN "請按<進料>或<退料>進行換料!"
-  #define FILAMENT_CHANGE_TEXT_T_CN       "待打印機暫停后,請按<進料>或<退料>進行換料!"
-#endif
-
-  #define FILAMENT_CHANGE_TEXT_T_CN       "待打印機暫停后,\n請按<進料>或<退料>"
+#define FILAMENT_CHANGE_TEXT_T_CN       "待打印機暫停后,\n請按<進料>或<退料>"
 
 #define FILAMENT_DIALOG_LOAD_HEAT_TIPS_T_CN       "準備進料,正在加熱,請稍等"
 #define FILAMENT_DIALOG_UNLOAD_HEAT_TIPS_T_CN     "準備退料,正在加熱,請稍等"
@@ -437,8 +458,8 @@
 #define TITLE_PRINTING_T_CN           "正在打印"
 #define TITLE_OPERATION_T_CN          "操作"
 #define TITLE_ADJUST_T_CN             "調整"
-#define  TITLE_WIRELESS_T_CN          "無線網絡"
-#define  TITLE_FILAMENT_T_CN          "換料"
+#define TITLE_WIRELESS_T_CN           "無線網絡"
+#define TITLE_FILAMENT_T_CN           "換料"
 #define TITLE_ABOUT_T_CN              "關於"
 #define TITLE_FAN_T_CN                "風扇"
 #define TITLE_LANGUAGE_T_CN           "語言"
@@ -462,7 +483,6 @@
 #define DIALOG_RETRY_T_CN             "重試"
 #define DIALOG_STOP_T_CN              "停止"
 #define DIALOG_REPRINT_FROM_BREAKPOINT_T_CN "從斷點續打?"
-//#define DIALOG_UNBIND_PRINTER_T_CN    "解除綁定?"
 #define DIALOG_ERROR_TIPS1_T_CN       "錯誤:找不到文件,請插入sd卡/u盤!"
 #define DIALOG_ERROR_TIPS2_T_CN       "錯誤:通信失敗,請檢查波特率或主板硬件!"
 #define DIALOG_ERROR_TIPS3_T_CN       "錯誤:文件名或文件路徑太長!"
@@ -473,6 +493,8 @@
 #define DIALOG_PRINT_TIME_T_CN        "打印時間: "
 #define DIALOG_REPRINT_T_CN           "再打印壹次"
 #define DIALOG_WIFI_ENABLE_TIPS_T_CN  "wifi模塊正在配置中,請稍等......"
+#define DIALOG_PAUSING_TIPS_T_CN      "機器暫停中..."
+#define DIALOG_AUTO_LEVELING_TIPS_T_CN  "正在自動調平,請稍等..."
 
 #define TEXT_VALUE_T_CN               "%d℃/%d℃"
 #define EXTRUDE_TEXT_VALUE_T_T_CN     ": %d℃"
@@ -501,10 +523,9 @@
 #define EEPROM_READ_TIPS_T_CN         "是否使用EEPROM參數?"
 #define EEPROM_REVERT_TIPS_T_CN       "是否恢復默認參數?"
 
-#define MORE_CUSTOM1_TEXT_T_CN  USER_DESC_1
-#define MORE_CUSTOM2_TEXT_T_CN  USER_DESC_2
-#define MORE_CUSTOM3_TEXT_T_CN  USER_DESC_3
-#define MORE_CUSTOM4_TEXT_T_CN  USER_DESC_4
-#define MORE_CUSTOM5_TEXT_T_CN  USER_DESC_5
-#define MORE_CUSTOM6_TEXT_T_CN  USER_DESC_6
-#define MORE_CUSTOM7_TEXT_T_CN  USER_DESC_7
+#define MORE_CUSTOM1_TEXT_T_CN  MAIN_MENU_ITEM_1_DESC
+#define MORE_CUSTOM2_TEXT_T_CN  MAIN_MENU_ITEM_2_DESC
+#define MORE_CUSTOM3_TEXT_T_CN  MAIN_MENU_ITEM_3_DESC
+#define MORE_CUSTOM4_TEXT_T_CN  MAIN_MENU_ITEM_4_DESC
+#define MORE_CUSTOM5_TEXT_T_CN  MAIN_MENU_ITEM_5_DESC
+#define MORE_CUSTOM6_TEXT_T_CN  MAIN_MENU_ITEM_6_DESC

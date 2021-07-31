@@ -36,7 +36,6 @@
 #include "../../../../MarlinCore.h"
 
 extern uint16_t DeviceCode;
-extern unsigned char bmp_public_buf[14 * 1024];
 
 #if ENABLED(SDSUPPORT)
   extern char *createFilename(char * const buffer, const dir_t &p);
@@ -55,7 +54,6 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_preHeat.bin",
   "bmp_extruct.bin",
   "bmp_mov.bin",
-  // "bmp_zero.bin",
   "bmp_leveling.bin",
   "bmp_filamentchange.bin",
   "bmp_more.bin",
@@ -67,12 +65,6 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_speed127.bin",
   "bmp_speed0.bin",
 
-  //preheat screen
-  // "bmp_Add.bin",
-  // "bmp_Dec.bin",
-  "bmp_speed0.bin",
-  // "bmp_Extru2.bin",
-  // "bmp_Extru1.bin",
   "bmp_bed.bin",
   "bmp_step1_degree.bin",
   "bmp_step5_degree.bin",
@@ -82,9 +74,7 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_in.bin",
   "bmp_out.bin",
   "bmp_extru1.bin",
-  #if EXTRUDERS > 1
-    "bmp_extru2.bin",
-  #endif
+  "bmp_extru2.bin",
   "bmp_speed_high.bin",
   "bmp_speed_slow.bin",
   "bmp_speed_normal.bin",
@@ -114,7 +104,6 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   //operation screen
   "bmp_auto_off.bin",
   "bmp_speed.bin",
-  //"bmp_Mamual.bin", //TODO: didn't find it.. changed to bmp_manual_off.bin
   "bmp_fan.bin",
   "bmp_temp.bin",
   "bmp_extrude_opr.bin",
@@ -126,7 +115,6 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_step10_percent.bin",
   "bmp_extruct_sel.bin",
   "bmp_mov_changespeed.bin",
-  // "bmp_extrude_opr.bin", equal to "bmp_Extruct.bin"
   "bmp_mov_sel.bin",
   "bmp_speed_extruct.bin",
 
@@ -135,9 +123,7 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_resume.bin",
   "bmp_stop.bin",
   "bmp_ext1_state.bin",
-  #if EXTRUDERS > 1
-    "bmp_ext2_state.bin",
-  #endif
+  "bmp_ext2_state.bin",
   "bmp_bed_state.bin",
   "bmp_fan_state.bin",
   "bmp_time_state.bin",
@@ -145,57 +131,46 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_operate.bin",
 
   //manual leval screen (only if disabled auto level)
-  #if DISABLED(AUTO_BED_LEVELING_BILINEAR)
-    "bmp_leveling1.bin",
-    "bmp_leveling2.bin",
-    "bmp_leveling3.bin",
-    "bmp_leveling4.bin",
-    "bmp_leveling5.bin",
-  #endif
+  "bmp_leveling1.bin",
+  "bmp_leveling2.bin",
+  "bmp_leveling3.bin",
+  "bmp_leveling4.bin",
+  "bmp_leveling5.bin",
 
   //lang select screen
-  #if HAS_LANG_SELECT_SCREEN
-    "bmp_language.bin",
-    "bmp_simplified_cn.bin",
-    "bmp_simplified_cn_sel.bin",
-    "bmp_traditional_cn.bin",
-    "bmp_traditional_cn_sel.bin",
-    "bmp_english.bin",
-    "bmp_english_sel.bin",
-    "bmp_russian.bin",
-    "bmp_russian_sel.bin",
-    "bmp_spanish.bin",
-    "bmp_spanish_sel.bin",
-    "bmp_french.bin",
-    "bmp_french_sel.bin",
-    "bmp_italy.bin",
-    "bmp_italy_sel.bin",
-  #endif // HAS_LANG_SELECT_SCREEN
+  "bmp_language.bin",
+  "bmp_simplified_cn.bin",
+  "bmp_simplified_cn_sel.bin",
+  "bmp_traditional_cn.bin",
+  "bmp_traditional_cn_sel.bin",
+  "bmp_english.bin",
+  "bmp_english_sel.bin",
+  "bmp_russian.bin",
+  "bmp_russian_sel.bin",
+  "bmp_spanish.bin",
+  "bmp_spanish_sel.bin",
+  "bmp_french.bin",
+  "bmp_french_sel.bin",
+  "bmp_italy.bin",
+  "bmp_italy_sel.bin",
 
   // gcode preview
-  #if HAS_GCODE_DEFAULT_VIEW_IN_FLASH
-    "bmp_preview.bin",
-  #endif
+  "bmp_preview.bin",
 
-  #if HAS_LOGO_IN_FLASH
-    "bmp_logo.bin",
-  #endif
+  "bmp_logo.bin",
 
   // settings screen
   "bmp_about.bin",
   "bmp_eeprom_settings.bin",
   "bmp_machine_para.bin",
   "bmp_function1.bin",
-  //"bmp_manual_off.bin",
-  //"bmp_Fan.bin",
-  //"bmp_Language.bin",
 
   //start screen
   "bmp_printing.bin",
   "bmp_set.bin",
   "bmp_tool.bin",
 
-  //base icons
+  // base icons
   "bmp_arrow.bin",
   "bmp_back70x40.bin",
   "bmp_value_blank.bin",
@@ -204,30 +179,34 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   "bmp_enable.bin",
   "bmp_return.bin",
 
-  #if USE_WIFI_FUNCTION
-    //wifi screen
-    "bmp_wifi.bin",
-    "bmp_cloud.bin",
-  #endif
+  // wifi screen
+  "bmp_wifi.bin",
+  "bmp_cloud.bin",
+  
+  // multi volume selected
+  "bmp_usb_disk.bin",
+  "bmp_sd.bin",
 
-  //babystep screen
+  // Babystep screen
   "bmp_baby_move0_01.bin",
   "bmp_baby_move0_05.bin",
   "bmp_baby_move0_1.bin",
 
- //presets screen
-  //"bmp_preHeat.bin",
-  //"bmp_preHeat.bin",
-  //"bmp_Fan.bin",
-
-  // more screen
+  // More screen
   "bmp_custom1.bin",
   "bmp_custom2.bin",
   "bmp_custom3.bin",
   "bmp_custom4.bin",
   "bmp_custom5.bin",
   "bmp_custom6.bin",
-  "bmp_custom7.bin"
+  "bmp_custom7.bin",
+
+  // bltouch settings screen
+  "bmp_init_state.bin",
+  
+  // media select
+  "bmp_sd.bin",
+  "bmp_usb_disk.bin"
 };
 
 #if HAS_SPI_FLASH_FONT
@@ -261,14 +240,13 @@ uint32_t lv_get_pic_addr(uint8_t *Pname) {
     } while (PIC.name[j++] != '\0');
 
     if ((strcasecmp((char*)Pname, (char*)PIC.name)) == 0) {
-      if ((DeviceCode == 0x9488) || (DeviceCode == 0x5761))
+      if (DeviceCode == 0x9488 || DeviceCode == 0x5761)
         addr = PIC_DATA_ADDR_TFT35 + i * PER_PIC_MAX_SPACE_TFT35;
       else
         addr = PIC_DATA_ADDR_TFT32 + i * PER_PIC_MAX_SPACE_TFT32;
       return addr;
     }
   }
-
   return addr;
 }
 
@@ -279,20 +257,25 @@ void spiFlashErase_PIC() {
   volatile uint32_t pic_sectorcnt = 0;
   W25QXX.init(SPI_QUARTER_SPEED);
   //erase 0x001000 -64K
-	for (pic_sectorcnt = 0; pic_sectorcnt < (64 - 4) / 4; pic_sectorcnt++) {
-		W25QXX.SPI_FLASH_SectorErase(PICINFOADDR + pic_sectorcnt * 4 * 1024); 
-	}
-	//erase 64K -- 6M
-  for (pic_sectorcnt = 0; pic_sectorcnt < (PIC_SIZE_xM * 1024 / 64 - 1); pic_sectorcnt++)
+  for (pic_sectorcnt = 0; pic_sectorcnt < (64 - 4) / 4; pic_sectorcnt++) {
+    watchdog_refresh();
+    W25QXX.SPI_FLASH_SectorErase(PICINFOADDR + pic_sectorcnt * 4 * 1024);
+  }
+  //erase 64K -- 6M
+  for (pic_sectorcnt = 0; pic_sectorcnt < (PIC_SIZE_xM * 1024 / 64 - 1); pic_sectorcnt++) {
+    watchdog_refresh();
     W25QXX.SPI_FLASH_BlockErase((pic_sectorcnt + 1) * 64 * 1024);
+  }
 }
 
 #if HAS_SPI_FLASH_FONT
   void spiFlashErase_FONT() {
     volatile uint32_t Font_sectorcnt = 0;
     W25QXX.init(SPI_QUARTER_SPEED);
-    for (Font_sectorcnt = 0; Font_sectorcnt < 32-1; Font_sectorcnt++)
+    for (Font_sectorcnt = 0; Font_sectorcnt < 32-1; Font_sectorcnt++) {
+      watchdog_refresh();
       W25QXX.SPI_FLASH_BlockErase(FONTINFOADDR + Font_sectorcnt * 64 * 1024);
+    }
   }
 #endif
 
@@ -382,11 +365,9 @@ uint32_t Pic_Info_Write(uint8_t *P_name, uint32_t P_size) {
   return Pic_SaveAddr;
 }
 
-uint8_t public_buf[513];
-
 #if ENABLED(SDSUPPORT)
 
-  static void dosName2LongName(const char dosName[11], char* longName) {
+  static void dosName2LongName(const char dosName[11], char *longName) {
     uint8_t j = 0;
     LOOP_L_N(i, 11) {
       if (i == 8) longName[j++] = '.';
@@ -396,8 +377,8 @@ uint8_t public_buf[513];
     longName[j] = '\0';
   }
 
-  static int8_t arrayFindStr(const char arr[][LONG_FILENAME_LENGTH], uint8_t arraySize, const char* str) {
-    for (uint8_t a = 0; a < arraySize; a++) {
+  static uint16_t arrayFindStr(const char arr[][LONG_FILENAME_LENGTH], uint16_t arraySize, const char* str) {
+    for (uint16_t a = 0; a < arraySize; a++) {
       if (strcasecmp(arr[a], str) == 0)
         return a;
     }
@@ -424,6 +405,7 @@ uint8_t public_buf[513];
       return;
     }
 
+    watchdog_refresh();
     disp_assets_update_progress(fn);
 
     W25QXX.init(SPI_QUARTER_SPEED);
@@ -436,18 +418,21 @@ uint8_t public_buf[513];
     totalSizeLoaded += pfileSize;
     if (assetType == ASSET_TYPE_LOGO) {
       do {
+        watchdog_refresh();
         pbr = file.read(public_buf, BMP_WRITE_BUF_LEN);
         Pic_Logo_Write((uint8_t *)fn, public_buf, pbr);
       } while (pbr >= BMP_WRITE_BUF_LEN);
     }
     else if (assetType == ASSET_TYPE_TITLE_LOGO) {
       do {
+        watchdog_refresh();
         pbr = file.read(public_buf, BMP_WRITE_BUF_LEN);
         Pic_TitleLogo_Write((uint8_t *)fn, public_buf, pbr);
       } while (pbr >= BMP_WRITE_BUF_LEN);
     }
     else if (assetType == ASSET_TYPE_G_PREVIEW) {
       do {
+        watchdog_refresh();
         pbr = file.read(public_buf, BMP_WRITE_BUF_LEN);
         default_view_Write(public_buf, pbr);
       } while (pbr >= BMP_WRITE_BUF_LEN);
@@ -457,6 +442,7 @@ uint8_t public_buf[513];
       SPIFlash.beginWrite(Pic_Write_Addr);
       #if HAS_SPI_FLASH_COMPRESSION
         do {
+          watchdog_refresh();
           pbr = file.read(public_buf, SPI_FLASH_PageSize);
           TERN_(MARLIN_DEV_MODE, totalSizes += pbr);
           SPIFlash.writeData(public_buf, SPI_FLASH_PageSize);
@@ -477,6 +463,7 @@ uint8_t public_buf[513];
     else if (assetType == ASSET_TYPE_FONT) {
       Pic_Write_Addr = UNIGBK_FLASH_ADDR;
       do {
+        watchdog_refresh();
         pbr = file.read(public_buf, BMP_WRITE_BUF_LEN);
         W25QXX.SPI_FLASH_BufferWrite(public_buf, Pic_Write_Addr, pbr);
         Pic_Write_Addr += pbr;
@@ -491,14 +478,17 @@ uint8_t public_buf[513];
   }
 
   void UpdateAssets() {
+    if (!card.isMounted()) return;
     SdFile dir, root = card.getroot();
     if (dir.open(&root, assetsPath, O_RDONLY)) {
 
       disp_assets_update();
       disp_assets_update_progress("Erasing pics...");
+      watchdog_refresh();
       spiFlashErase_PIC();
       #if HAS_SPI_FLASH_FONT
         disp_assets_update_progress("Erasing fonts...");
+        watchdog_refresh();
         spiFlashErase_FONT();
       #endif
 
@@ -511,8 +501,8 @@ uint8_t public_buf[513];
         if (card.longFilename[0] == 0) continue;
         if (card.longFilename[0] == '.') continue;
 
-        int8_t a = arrayFindStr(assets, COUNT(assets), card.longFilename);
-        if (a >= 0 && a < (int8_t)COUNT(assets)) {
+        uint16_t a = arrayFindStr(assets, COUNT(assets), card.longFilename);
+        if (a >= 0 && a < (uint16_t)COUNT(assets)) {
           uint8_t assetType = ASSET_TYPE_ICON;
           if (strstr(assets[a], "_logo"))
             assetType = ASSET_TYPE_LOGO;
@@ -557,7 +547,7 @@ void Pic_Read(uint8_t *Pname, uint8_t *P_Rbuff) {
   PIC_MSG PIC;
 
   W25QXX.SPI_FLASH_BufferRead(&Pic_cnt, PIC_COUNTER_ADDR, 1);
-  if (Pic_cnt == 0xff)
+  if (Pic_cnt == 0xFF)
     Pic_cnt = 0;
 
   for (i = 0; i < Pic_cnt; i++) {
