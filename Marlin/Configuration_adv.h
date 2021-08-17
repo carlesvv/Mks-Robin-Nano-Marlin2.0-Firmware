@@ -1457,7 +1457,7 @@
    * Tested with this bootloader:
    *   https://github.com/FleetProbe/MicroBridge-Arduino-ATMega2560
    */
-  //#define SD_FIRMWARE_UPDATE
+  // #define SD_FIRMWARE_UPDATE
   #if ENABLED(SD_FIRMWARE_UPDATE)
     #define SD_FIRMWARE_UPDATE_EEPROM_ADDR    0x1FF
     #define SD_FIRMWARE_UPDATE_ACTIVE_VALUE   0xF0
@@ -3573,8 +3573,8 @@
   #define MAIN_MENU_ITEM_6_GCODE "G28 X;\nG28 Y;\nG91;\nG1 Z10;\nG90;\nG1 X0 Y180;"
   //#define MAIN_MENU_ITEM_6_CONFIRM
 
-  #define MAIN_MENU_ITEM_6_DESC "Resetejar"
-  #define MAIN_MENU_ITEM_6_GCODE "M502;\nM500;\nM501;"
+  #define MAIN_MENU_ITEM_7_DESC "Resetejar"
+  #define MAIN_MENU_ITEM_7_GCODE "M502;\nM500;\nM501;"
  //#define MAIN_MENU_ITEM_6_CONFIRM
 
 #endif
