@@ -516,9 +516,9 @@
     #define DEFAULT_Kd_LIST { 76.71, 76.71 }
   #else
     // Sapphire Pro
-    #define DEFAULT_Kp 24.10
-    #define DEFAULT_Ki 1.87
-    #define DEFAULT_Kd 77.61
+    #define DEFAULT_Kp 25.22
+    #define DEFAULT_Ki 2.05
+    #define DEFAULT_Kd 77.67
   #endif
 #endif // PIDTEMP
 
@@ -807,7 +807,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.488, 159.802, 1600, 428.299 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.488, 159.802, 1600, 437.709 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1056,7 +1056,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { +27.13689, -32.9814, -1.735 }
+#define NOZZLE_TO_PROBE_OFFSET { -29.8, -13.5, -1.335 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1198,7 +1198,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -1233,8 +1233,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 225
-#define Y_BED_SIZE 180
+#define X_BED_SIZE 220
+#define Y_BED_SIZE 170
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1242,7 +1242,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE/*+X_MIN_POS*/
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 197
+#define Z_MAX_POS 260
 
 /**
  * Software Endstops
