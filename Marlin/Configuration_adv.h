@@ -3574,8 +3574,8 @@
   #define MAIN_MENU_ITEM_6_GCODE "G28 X;\nG28 Y;\nG91;\nG1 Z10;\nG90;\nG1 X0 Y170;"
   //#define MAIN_MENU_ITEM_6_CONFIRM
 
-  #define MAIN_MENU_ITEM_6_DESC "Resetejar"
-  #define MAIN_MENU_ITEM_6_GCODE "M502;\nM500;\nM501;"
+  #define MAIN_MENU_ITEM_7_DESC "Resetejar"
+  #define MAIN_MENU_ITEM_7_GCODE "M502;\nM500;\nM501;"
  //#define MAIN_MENU_ITEM_6_CONFIRM
 
 #endif
